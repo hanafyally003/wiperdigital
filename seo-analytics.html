@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO & Analytics — Nexus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
+<div class="mob-menu" id="mobM">
+  <div class="mob-head"><div class="logo">Neko<em>tech</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <nav>
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="store.html" onclick="closeMenu()">Store</a>
+    <a href="prompts.html" onclick="closeMenu()">Prompts</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
+  </nav>
+  <div class="mob-auth"><button class="btn-ghost">Log In</button><button class="btn-solid">Get Started</button></div>
+</div>
+
+<nav class="navbar" id="top">
+  <div class="logo">Neko<em>tech</em></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="store.html" class="active">Store</a></li>
+    <li><a href="prompts.html">Prompts</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" id="tBtn"><i class="fas fa-moon" id="tIco"></i></button>
+    <button class="btn-ghost">Log In</button>
+    <button class="btn-solid">Get Started</button>
+    <button class="hamburger" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="index.html#services">Services</a><i class="fas fa-chevron-right"></i><span style="color:var(--text)">SEO & Analytics</span></div>
+
+<div style="max-width:1160px;margin:0 auto;">
+<div class="svc-hero">
+  <div class="svc-hero-text">
+    <div class="svc-badge"><i class="fas fa-search"></i> SEO & Analytics</div>
+    <h1>Rank higher. Know more. <span>Grow faster.</span></h1>
+    <p>We combine technical SEO mastery with deep analytics expertise — so your website climbs the rankings, you understand exactly what's driving results, and you can make confident, data-backed decisions every day.</p>
+    <div class="hero-btns"><button class="btn-primary">Get a Free SEO Audit <i class="fas fa-arrow-right"></i></button><button class="btn-outline">See Our Results</button></div>
+  </div>
+  <div class="svc-hero-illo">
+    <svg viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="230" cy="190" rx="185" ry="165" fill="var(--accent-lt)" opacity=".45"/>
+      <!-- SERP result mockup -->
+      <rect x="60" y="60" width="340" height="250" rx="12" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+      <!-- Search bar -->
+      <rect x="72" y="74" width="260" height="22" rx="11" fill="var(--bg-2)" stroke="var(--border)" stroke-width="1"/>
+      <text x="86" y="89" font-family="Inter,sans-serif" font-size="9" fill="var(--text-3)">best digital agency near me</text>
+      <rect x="336" y="74" width="50" height="22" rx="11" fill="var(--accent)"/>
+      <text x="361" y="89" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">Search</text>
+      <!-- Result 1 (our client - highlighted) -->
+      <rect x="72" y="108" width="316" height="56" rx="8" fill="var(--accent-lt)" stroke="var(--accent)" stroke-width="1"/>
+      <rect x="80" y="116" width="10" height="10" rx="2" fill="var(--accent)"/>
+      <text x="96" y="125" font-family="Inter,sans-serif" font-size="8" fill="var(--accent)" font-weight="700">nexus.agency</text>
+      <text x="80" y="140" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="var(--text)">Nexus Agency — Digital Services</text>
+      <rect x="80" y="147" width="200" height="4" rx="2" fill="var(--text-3)" opacity=".4"/>
+      <rect x="80" y="155" width="150" height="4" rx="2" fill="var(--text-3)" opacity=".3"/>
+      <!-- Result 2 -->
+      <rect x="72" y="172" width="316" height="44" rx="8" fill="var(--bg-2)"/>
+      <text x="80" y="186" font-family="Inter,sans-serif" font-size="10" fill="var(--text-2)" font-weight="600">Competitor A</text>
+      <rect x="80" y="193" width="180" height="4" rx="2" fill="var(--border)"/>
+      <rect x="80" y="202" width="140" height="4" rx="2" fill="var(--border)"/>
+      <!-- Result 3 -->
+      <rect x="72" y="224" width="316" height="44" rx="8" fill="var(--bg-2)"/>
+      <text x="80" y="238" font-family="Inter,sans-serif" font-size="10" fill="var(--text-2)" font-weight="600">Competitor B</text>
+      <rect x="80" y="245" width="200" height="4" rx="2" fill="var(--border)"/>
+      <rect x="80" y="254" width="160" height="4" rx="2" fill="var(--border)"/>
+      <!-- #1 badge -->
+      <g transform="translate(344,100)">
+        <circle cx="24" cy="24" r="24" fill="var(--accent)"/>
+        <text x="24" y="20" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">#1</text>
+        <text x="24" y="32" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">RANK</text>
+      </g>
+      <!-- Floating: traffic -->
+      <g transform="translate(22,190)">
+        <rect width="114" height="52" rx="11" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="13" y="20" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="var(--text-3)" letter-spacing=".06em">ORGANIC</text>
+        <text x="13" y="38" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="var(--accent)" letter-spacing="-.03em">+240%</text>
+        <text x="13" y="48" font-family="Inter,sans-serif" font-size="8" fill="#22c55e">In 6 months</text>
+      </g>
+      <!-- Floating: keywords -->
+      <g transform="translate(342,300)">
+        <rect width="110" height="52" rx="11" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="13" y="20" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="var(--text-3)" letter-spacing=".06em">KEYWORDS</text>
+        <text x="13" y="38" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="var(--text)" letter-spacing="-.03em">1,240</text>
+        <text x="13" y="48" font-family="Inter,sans-serif" font-size="8" fill="#22c55e">Ranking page 1</text>
+      </g>
+    </svg>
+  </div>
+</div>
+</div>
+
+<section style="background:var(--bg);padding:72px 52px;"><div class="wrap">
+  <div class="eyebrow rev">What We Do</div><h2 class="sec-h rev">Full-stack SEO & data intelligence</h2><p class="sec-p rev">We combine technical excellence, content strategy, and actionable analytics to drive organic growth that compounds over time.</p>
+  <div class="feat-grid">
+    <div class="feat-card rev"><div class="feat-icon"><i class="fas fa-wrench"></i></div><h3>Technical SEO</h3><p>Full site audits covering crawlability, Core Web Vitals, schema markup, site architecture, and indexation — fixing what holds you back from ranking.</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-key"></i></div><h3>Keyword Research</h3><p>In-depth research to find high-intent, high-volume keywords your ideal customers are actually searching — and a roadmap to rank for them.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-file-alt"></i></div><h3>Content Strategy</h3><p>Topic clusters, pillar pages, and content calendars that build topical authority and capture organic traffic at every stage of the funnel.</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-link"></i></div><h3>Link Building</h3><p>White-hat outreach campaigns to earn authoritative backlinks from relevant publications — the single biggest lever for ranking improvements.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-chart-line"></i></div><h3>GA4 & Tag Manager</h3><p>Full analytics implementation: events, goals, conversion tracking, custom dimensions, and attribution models configured from scratch.</p></div>
+    <div class="feat-card rev" style="transition-delay:.18s"><div class="feat-icon"><i class="fas fa-table"></i></div><h3>Custom Dashboards</h3><p>Looker Studio dashboards that surface the metrics that matter — updated daily, always available, no more Excel spreadsheets.</p></div>
+  </div>
+</div></section>
+
+<section class="process"><div class="wrap">
+  <div class="eyebrow rev">How We Work</div><h2 class="sec-h rev">Our SEO & analytics process</h2><p class="sec-p rev">Structured, transparent, and built for compounding results over the long term.</p>
+  <div class="steps rev">
+    <div class="step"><div class="step-num">1</div><h3>Full Audit</h3><p>Technical audit, keyword gap analysis, competitor benchmarking, and analytics health check — a complete picture of where you stand.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Strategy & Roadmap</h3><p>A prioritised 90-day action plan covering quick wins, content priorities, technical fixes, and link-building targets.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Execute & Publish</h3><p>We implement technical fixes, publish optimised content, run outreach campaigns, and set up all tracking infrastructure.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Measure & Iterate</h3><p>Monthly reporting, ranking tracking, and strategy refinement to keep your trajectory consistently upward.</p></div>
+  </div>
+</div></section>
+
+<section style="background:var(--bg);padding:80px 52px;"><div class="wrap"><div class="split">
+  <div class="split-text">
+    <div class="eyebrow rev">Why SEO Wins Long-Term</div><h2 class="sec-h rev">Organic traffic is the highest-ROI channel — by far</h2>
+    <p class="sec-p rev">Paid ads stop the moment you stop paying. SEO builds compounding value that keeps driving traffic and leads for years — often at a fraction of the cost-per-lead of paid channels.</p>
+    <div class="split-list rev">
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>68% of online experiences</strong> begin with a search engine (BrightEdge).</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>SEO leads have a <strong>14.6% close rate</strong> vs 1.7% for outbound leads (Moz).</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>The <strong>top 3 organic results</strong> receive 75% of all clicks for a given query.</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>Our clients average a <strong>240% increase in organic traffic</strong> within 6 months.</p></div>
+    </div>
+    <button class="btn-primary rev">Get a Free Audit <i class="fas fa-arrow-right"></i></button>
+  </div>
+  <div class="split-illo rev">
+    <svg viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="210" cy="180" rx="170" ry="150" fill="var(--accent-lt)" opacity=".4"/>
+      <!-- Analytics dashboard -->
+      <rect x="55" y="70" width="310" height="220" rx="14" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+      <rect x="55" y="70" width="310" height="24" rx="14" fill="var(--bg-3)"/>
+      <rect x="55" y="84" width="310" height="10" fill="var(--bg-3)"/>
+      <text x="73" y="86" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="var(--text-2)">SEO Performance Dashboard</text>
+      <!-- Rank chart -->
+      <rect x="67" y="102" width="180" height="100" rx="8" fill="var(--bg-2)"/>
+      <text x="77" y="118" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="var(--text-2)">Keyword Rankings</text>
+      <line x1="77" y1="185" x2="237" y2="185" stroke="var(--border)" stroke-width="1"/>
+      <!-- Inverted rank chart (lower = better) -->
+      <polyline points="77,175 101,168 125,160 149,145 173,150 197,135 221,122 237,108" stroke="var(--accent)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="237" cy="108" r="4" fill="var(--accent)"/>
+      <text x="237" y="104" font-family="Inter,sans-serif" font-size="7.5" fill="var(--accent)" font-weight="700" text-anchor="end">#1</text>
+      <!-- Traffic counter -->
+      <rect x="255" y="102" width="98" height="44" rx="8" fill="var(--bg-2)"/>
+      <text x="265" y="120" font-family="Inter,sans-serif" font-size="8" fill="var(--text-3)" font-weight="600" letter-spacing=".06em">SESSIONS</text>
+      <text x="265" y="137" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="var(--text)" letter-spacing="-.03em">48,200</text>
+      <rect x="255" y="154" width="98" height="44" rx="8" fill="var(--bg-2)"/>
+      <text x="265" y="172" font-family="Inter,sans-serif" font-size="8" fill="var(--text-3)" font-weight="600" letter-spacing=".06em">CONVERSIONS</text>
+      <text x="265" y="189" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="var(--accent)" letter-spacing="-.03em">3.2%</text>
+      <!-- Keyword list -->
+      <rect x="67" y="210" width="286" height="68" rx="8" fill="var(--bg-2)"/>
+      <text x="77" y="226" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="var(--text-2)">Top Keywords</text>
+      <rect x="77" y="232" width="8" height="8" rx="2" fill="var(--accent)"/>
+      <rect x="89" y="234" width="80" height="5" rx="2" fill="var(--border)"/>
+      <text x="315" y="240" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#22c55e" text-anchor="end">#1</text>
+      <rect x="77" y="246" width="8" height="8" rx="2" fill="var(--accent)" opacity=".7"/>
+      <rect x="89" y="248" width="100" height="5" rx="2" fill="var(--border)"/>
+      <text x="315" y="254" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#22c55e" text-anchor="end">#2</text>
+      <rect x="77" y="260" width="8" height="8" rx="2" fill="var(--accent)" opacity=".5"/>
+      <rect x="89" y="262" width="70" height="5" rx="2" fill="var(--border)"/>
+      <text x="315" y="268" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#22c55e" text-anchor="end">#3</text>
+    </svg>
+  </div>
+</div></div></section>
+
+<section class="pricing"><div class="wrap">
+  <div class="eyebrow rev">Pricing</div><h2 class="sec-h rev">SEO & analytics packages</h2><p class="sec-p rev">Monthly retainers built for consistent, compounding growth — not short-term gains.</p>
+  <div class="pkg-grid">
+    <div class="pkg-card rev"><span class="pkg-tag">Foundation</span><h3>Essentials</h3><p class="pkg-desc">Core SEO and analytics for businesses starting their organic growth journey.</p><div class="pkg-price">$1,200<span>/month</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Technical SEO audit + fixes</div><div class="pkg-feat"><i class="fas fa-check"></i>Keyword research & targeting</div><div class="pkg-feat"><i class="fas fa-check"></i>GA4 + Search Console setup</div><div class="pkg-feat"><i class="fas fa-check"></i>Monthly ranking report</div></div><button class="btn-outline" style="width:100%;justify-content:center;">Get Started</button></div>
+    <div class="pkg-card featured rev" style="transition-delay:.08s"><span class="pkg-tag">Most Popular</span><h3>Growth</h3><p class="pkg-desc">Comprehensive SEO + analytics for businesses serious about owning their niche organically.</p><div class="pkg-price">$2,800<span>/month</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Full technical SEO management</div><div class="pkg-feat"><i class="fas fa-check"></i>4 optimised content pieces/mo</div><div class="pkg-feat"><i class="fas fa-check"></i>Link building (8 links/mo)</div><div class="pkg-feat"><i class="fas fa-check"></i>Custom Looker Studio dashboard</div><div class="pkg-feat"><i class="fas fa-check"></i>Monthly strategy call</div></div><button class="btn-primary" style="width:100%;justify-content:center;">Get Started <i class="fas fa-arrow-right"></i></button></div>
+    <div class="pkg-card rev" style="transition-delay:.16s"><span class="pkg-tag">Authority</span><h3>Dominate</h3><p class="pkg-desc">Aggressive SEO for competitive industries where you need to outrank well-funded competitors.</p><div class="pkg-price">Custom<span> pricing</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Everything in Growth</div><div class="pkg-feat"><i class="fas fa-check"></i>8+ content pieces/month</div><div class="pkg-feat"><i class="fas fa-check"></i>20+ links/month</div><div class="pkg-feat"><i class="fas fa-check"></i>PR & digital outreach</div><div class="pkg-feat"><i class="fas fa-check"></i>Competitor gap attacks</div></div><button class="btn-outline" style="width:100%;justify-content:center;">Talk to Us</button></div>
+  </div>
+</div></section>
+
+<section style="background:var(--bg);padding:80px 52px;"><div class="wrap" style="max-width:760px;">
+  <div class="eyebrow rev">FAQ</div><h2 class="sec-h rev">Common questions</h2>
+  <div class="faq-list rev">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long before SEO shows results? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Expect to see ranking movement within 60–90 days for lower-competition terms. Significant organic traffic growth typically kicks in around month 4–6. SEO is a compounding channel — the longer you invest, the stronger and cheaper the returns become.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do you need from us to get started? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>We'll need access to your Google Analytics, Google Search Console, and website CMS. If these aren't set up yet, we'll handle that too. We'll also want a 90-minute onboarding call to understand your business, goals, and competitive landscape.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you guarantee rankings? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>No reputable agency guarantees specific rankings — Google's algorithm is complex and constantly evolving. What we guarantee is a transparent process, proven methodology, and a track record of results. We share detailed monthly reports so you always know exactly what's been done and what impact it had.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you set up analytics for an existing site? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. Analytics setup and auditing is a standalone service. We'll audit your existing setup, fix tracking gaps, migrate to GA4 if needed, configure events and goals, and build a custom dashboard tailored to your KPIs.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is SEO still worth it with AI search changing things? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes — and in many ways more so. AI Overviews and features like Google's SGE still draw from the same high-authority, well-structured content that traditional SEO rewards. The fundamentals haven't changed: create genuinely useful content, earn authoritative links, and maintain a technically sound website.</p></div></div>
+  </div>
+</div></section>
+
+<div class="cta-band rev"><div class="cta-inner"><div><h2>Find out exactly what's holding your rankings back.</h2><p>Get a free, no-obligation SEO & analytics audit — delivered within 48 hours.</p></div><button class="btn-white">Get My Free Audit <i class="fas fa-arrow-right"></i></button></div></div>
+
+<section class="other-svc"><div class="wrap"><div class="eyebrow rev">Explore More</div><h2 class="sec-h rev">Our other services</h2><div class="other-grid rev"><a href="web-development.html" class="other-card"><i class="fas fa-code"></i><h4>Web Development</h4><p>Fast, modern websites</p></a><a href="brand-identity.html" class="other-card"><i class="fas fa-pen-nib"></i><h4>Brand Identity</h4><p>Logos & guidelines</p></a><a href="digital-marketing.html" class="other-card"><i class="fas fa-chart-bar"></i><h4>Digital Marketing</h4><p>SEO, PPC & social</p></a><a href="mobile-applications.html" class="other-card"><i class="fas fa-mobile-alt"></i><h4>Mobile Apps</h4><p>iOS & Android apps</p></a><a href="ecommerce.html" class="other-card"><i class="fas fa-store"></i><h4>E-Commerce</h4><p>Online stores</p></a></div></div></section>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo">Neko<em>tech</em></div><p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p><div class="socials"><a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a><a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a><a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="store.html">Store</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="#">Web Development</a></li><li><a href="#">Brand Identity</a></li><li><a href="#">Digital Marketing</a></li><li><a href="#">Mobile Apps</a></li><li><a href="#">SEO & Analytics</a></li></ul></div>
+    <div class="f-col"><h4>Newsletter</h4><p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth — no spam, ever.</p><div class="nl-row"><input type="email" placeholder="you@company.com"><button>Subscribe</button></div><div class="f-contact"><span><i class="fas fa-envelope"></i>hello@nekotech.io</span><span><i class="fas fa-phone"></i>+255 742 000 800</span><span><i class="fas fa-map-marker-alt"></i>Dar es Salaam, Tanzania</span></div></div>
+  </div>
+  <div class="footer-bot"><p>© 2025 Nekotech. All rights reserved.</p><div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div></div>
+</footer>
+
+<script>
+const html=document.documentElement,tBtn=document.getElementById('tBtn'),tIco=document.getElementById('tIco');
+tBtn.addEventListener('click',()=>{const d=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',d?'light':'dark');tIco.className=d?'fas fa-moon':'fas fa-sun';});
+function openMenu(){document.getElementById('mobM').classList.add('on');document.getElementById('mobOv').classList.add('on');}
+function closeMenu(){document.getElementById('mobM').classList.remove('on');document.getElementById('mobOv').classList.remove('on');}
+window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('on',scrollY>400));
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function toggleFaq(btn){const a=btn.nextElementSibling;const open=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}}
+</script>
+</body></html>

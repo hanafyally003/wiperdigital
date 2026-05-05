@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity wiper digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
+<div class="mob-menu" id="mobM">
+  <div class="mob-head"><div class="logo">Wi<em>per</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <nav>
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="store.html" onclick="closeMenu()">Store</a>
+    <a href="prompts.html" onclick="closeMenu()">Prompts</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
+  </nav>
+  <div class="mob-auth"><button class="btn-ghost">Log In</button><button class="btn-solid">Get Started</button></div>
+</div>
+
+<nav class="navbar" id="top">
+  <div class="logo">Wi<em>per</em></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html"  class="active">Services</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="prompts.html">Prompts</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" id="tBtn"><i class="fas fa-moon" id="tIco"></i></button>
+    <button class="btn-ghost">Log In</button>
+    <button class="btn-solid">Get Started</button>
+    <button class="hamburger" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="index.html#services">Services</a><i class="fas fa-chevron-right"></i><span style="color:var(--text)">Brand Identity</span></div>
+
+<div style="max-width:1160px;margin:0 auto;">
+<div class="svc-hero">
+  <div class="svc-hero-text">
+    <div class="svc-badge"><i class="fas fa-pen-nib"></i> Brand Identity</div>
+    <h1>A brand that makes people <span>stop & remember</span></h1>
+    <p>We craft comprehensive brand identities from logo and colour palette to typography and tone of voice that create instant recognition and build lasting trust with your audience.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">Start Your Brand <i class="fas fa-arrow-right"></i></button>
+      <button class="btn-outline">See Brand Work</button>
+    </div>
+  </div>
+     <div class="hero-visual">
+  <img src="PHOTO/hero03.png" alt="Hero Image" class="hero-img">
+</div>
+</div>
+</div>
+
+<!-- FEATURES -->
+<section style="background:var(--bg);padding:72px 52px;">
+<div class="wrap">
+  <div class="eyebrow rev">What's Included</div>
+  <h2 class="sec-h rev">A complete brand identity system</h2>
+  <p class="sec-p rev">Every deliverable your business needs to show up consistently and confidently across every touchpoint.</p>
+  <div class="feat-grid">
+    <div class="feat-card rev"><div class="feat-icon"><i class="fas fa-star"></i></div><h3>Logo Design</h3><p>Primary logo, variations, icon mark, and reverse versions delivered in all formats (SVG, PNG, PDF, MOCKUP).</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-palette"></i></div><h3>Colour System</h3><p>A carefully crafted palette primary, secondary, and neutral tones with accessibility contrast ratios verified.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-font"></i></div><h3>Typography</h3><p>Curated font pairings for headings, body text, and UI elements, with a clear hierarchy and usage rules.</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-book-open"></i></div><h3>Brand Guidelines</h3><p>A comprehensive PDF/web guide covering logo usage, spacing, colours, typography, and tone of voice.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-briefcase"></i></div><h3>Brand Collateral</h3><p>Business cards, letterheads, email signatures, and social media templates all production ready.</p></div>
+    <div class="feat-card rev" style="transition-delay:.18s"><div class="feat-icon"><i class="fas fa-comment-alt"></i></div><h3>Tone of Voice</h3><p>Messaging pillars, taglines, and communication guidelines that define how your brand speaks and writes.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+<div class="wrap">
+  <div class="eyebrow rev">Our Process</div>
+  <h2 class="sec-h rev">How we build your brand</h2>
+  <p class="sec-p rev">A collaborative, research driven process that ensures the result truly represents who you are.</p>
+  <div class="steps rev">
+    <div class="step"><div class="step-num">1</div><h3>Brand Discovery</h3><p>We deep dive into your business, values, audience, and competitors to define the strategic foundation.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Concept Design</h3><p>We present 2–3 distinct visual directions. You select a direction and we refine it to perfection.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>System Build</h3><p>We extend the chosen concept into a full system colours, type, icons, patterns, and templates.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Delivery</h3><p>Complete asset library + brand guidelines document handed over in all formats you'll ever need.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- SPLIT -->
+<section style="background:var(--bg);padding:80px 52px;">
+<div class="wrap">
+  <div class="split">
+    <div class="split-text">
+      <div class="eyebrow rev">Why It Matters</div>
+      <h2 class="sec-h rev">A strong brand is a growth engine</h2>
+      <p class="sec-p rev">Branding isn't a luxury it's the foundation that makes every other marketing effort work better and cost less.</p>
+      <div class="split-list rev">
+        <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>Consistent branding</strong> increases revenue by up to 23% (Forbes).</p></div>
+        <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>First visual impressions</strong> determine whether someone trusts a business within 7 seconds.</p></div>
+        <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>Brand recognition</strong> reduces cost-per-acquisition across all paid marketing channels.</p></div>
+        <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>A defined brand voice</strong> builds community and turns customers into advocates.</p></div>
+      </div>
+      <button class="btn-primary rev">Start Your Brand <i class="fas fa-arrow-right"></i></button>
+    </div>
+       <div class="hero-visual">
+  <img src="PHOTO/hero03.png" alt="Hero Image" class="hero-img">
+</div>
+  </div>
+</div>
+</section>
+
+<!-- PACKAGES -->
+<section class="pricing">
+<div class="wrap">
+  <div class="eyebrow rev">Pricing</div>
+  <h2 class="sec-h rev">Brand packages</h2>
+  <p class="sec-p rev">Flexible packages for businesses at every stage from a lean startup to an established enterprise.</p>
+  <div class="pkg-grid">
+    <div class="pkg-card rev"><span class="pkg-tag">Essential</span><h3>Package 01</h3><p class="pkg-desc">Core brand identity for a startup or new venture launching for the first time.</p><div class="pkg-price">150,000 Tsh<span> one-time</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Logo + variations</div><div class="pkg-feat"><i class="fas fa-check"></i>1 week social media managment</div><div class="pkg-feat"><i class="fas fa-check"></i>3 posters</div><div class="pkg-feat"><i class="fas fa-check">Simple training</i></div></div><button class="btn-outline" style="width:100%;justify-content:center;">Get Started</button></div>
+    <div class="pkg-card featured rev" style="transition-delay:.08s"><span class="pkg-tag">Most Popular</span><h3>Package 02</h3><p class="pkg-desc">A complete brand system that scales with your business across every channel.</p><div class="pkg-price">250,000<span> one-time</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Full logo system</div><div class="pkg-feat"><i class="fas fa-check"></i>Complete colour system</div><div class="pkg-feat"><i class="fas fa-check"></i>1 month social media managment</div><div class="pkg-feat"><i class="fas fa-check"></i>10 posters</div><div class="pkg-feat"><i class="fas fa-check"></i>Comprehensive brand guidelines</div></div><button class="btn-primary" style="width:100%;justify-content:center;">Get Started <i class="fas fa-arrow-right"></i></button></div>
+    <div class="pkg-card rev" style="transition-delay:.16s"><span class="pkg-tag">Full Brand</span><h3>Rebrand</h3><p class="pkg-desc">Strategic rebrand or brand refresh with research, positioning, and full rollout.</p><div class="pkg-price">Custom<span> pricing</span></div><div class="pkg-divider"></div><div class="pkg-features"><div class="pkg-feat"><i class="fas fa-check"></i>Brand strategy & positioning</div><div class="pkg-feat"><i class="fas fa-check"></i>Competitor & audience research</div><div class="pkg-feat"><i class="fas fa-check"></i>Full identity system</div><div class="pkg-feat"><i class="fas fa-check"></i>Tone of voice & messaging</div><div class="pkg-feat"><i class="fas fa-check"></i>Website visual refresh</div></div><button class="btn-outline" style="width:100%;justify-content:center;">Talk to Us</button></div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg);padding:80px 52px;">
+<div class="wrap" style="max-width:760px;">
+  <div class="eyebrow rev">FAQ</div><h2 class="sec-h rev">Common questions</h2>
+  <div class="faq-list rev">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does a brand project take? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>A standard brand identity project takes 4–6 weeks. This includes 1 week of discovery, 2 weeks of concept design, 1–2 weeks of refinement, and 1 week for final delivery and guidelines.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many logo concepts will I see? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>We present 2–3 distinct brand directions at the concept stage. Each direction includes a logo, colour palette, and typography sample. You choose one direction to develop further.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I own the logo files? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes full IP transfer on final payment. You receive all source files (AI, EPS, SVG, PNG, PDF) and own the designs completely.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you redesign an existing brand? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. Our Rebrand package covers everything from a light refresh to a full strategic repositioning. We start with an audit of your existing brand before making any recommendations.</p></div></div>
+  </div>
+</div>
+</section>
+
+<div class="cta-band rev"><div class="cta-inner"><div><h2>Ready to build a brand people remember?</h2><p>Book a free brand consultation no commitment required.</p></div>  <a href="https://wa.me/255769156157" button class="btn-white">Message us<i class="fas fa-arrow-right"></i></button></div></div></a>
+
+<section class="other-svc"><div class="wrap"><div class="eyebrow rev">Explore More</div><h2 class="sec-h rev">Our other services</h2><div class="other-grid rev"><a href="web-development.html" class="other-card"><i class="fas fa-code"></i><h4>Web Development</h4><p>Fast, modern websites</p></a><a href="digital-marketing.html" class="other-card"><i class="fas fa-chart-bar"></i><h4>Digital Marketing</h4><p>SEO, PPC & social</p></a><a href="mobile-applications.html" class="other-card"><i class="fas fa-mobile-alt"></i><h4>Mobile Apps</h4><p>iOS & Android apps</p></a><a href="ecommerce.html" class="other-card"><i class="fas fa-store"></i><h4>E-Commerce</h4><p>Online stores</p></a><a href="seo-analytics.html" class="other-card"><i class="fas fa-search"></i><h4>SEO & Analytics</h4><p>Rank & grow</p></a></div></div></section>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo">wiper<em>digital</em></div><p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p><div class="socials"><a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a><a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a><a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="store.html">Store</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="web-development.html">Web Development</a></li><li><a href="brand-identity.html">Brand Identity</a></li><li><a href="digital-marketing.html">Digital Marketing</a></li><li><a href="mobile-applications.html">Mobile Apps</a></li><li><a href="seo-analytics.html">SEO & Analytics</a></li></ul></div>
+    <div class="f-col"><h4>Newsletter</h4><p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth no spam, ever.</p><div class="nl-row"><input type="email" placeholder="you@company.com"><button>Subscribe</button></div><div class="f-contact"><span><i class="fas fa-envelope"></i>info@wiperdigital.com</span><span><i class="fas fa-phone"></i>+255 769 156 157</span><span><i class="fas fa-map-marker-alt"></i>Dodoma, Tanzania</span></div></div>
+  </div>
+  <div class="footer-bot"><p>© 2026 wiper digital. All rights reserved.</p><div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div></div>
+</footer>
+
+
+<script>
+const html=document.documentElement,tBtn=document.getElementById('tBtn'),tIco=document.getElementById('tIco');
+tBtn.addEventListener('click',()=>{const d=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',d?'light':'dark');tIco.className=d?'fas fa-moon':'fas fa-sun';});
+function openMenu(){document.getElementById('mobM').classList.add('on');document.getElementById('mobOv').classList.add('on');}
+function closeMenu(){document.getElementById('mobM').classList.remove('on');document.getElementById('mobOv').classList.remove('on');}
+window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('on',scrollY>400));
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function toggleFaq(btn){const a=btn.nextElementSibling;const open=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}}
+</script>
+</body></html>

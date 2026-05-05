@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store wiper digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--bg:#ffffff;--bg-2:#f7f8fa;--bg-3:#edf0f4;--surface:#ffffff;--border:#e4e7ec;--text:#0f1117;--text-2:#4a5568;--text-3:#8a94a6;--accent:#0052cc;--accent-h:#0041a8;--accent-lt:#e8f0fe;--shadow-sm:0 1px 3px rgba(0,0,0,0.07),0 4px 12px rgba(0,0,0,0.04);--shadow-md:0 4px 24px rgba(0,0,0,0.09);--radius:10px;--radius-lg:14px;}
+[data-theme="dark"]{--bg:#0c0d10;--bg-2:#13151a;--bg-3:#1c1f28;--surface:#161820;--border:#252830;--text:#eef0f4;--text-2:#9aa3b2;--text-3:#5a6272;--accent:#4d8eff;--accent-h:#6ba0ff;--accent-lt:rgba(77,142,255,0.1);--shadow-sm:0 1px 3px rgba(0,0,0,0.3);--shadow-md:0 4px 24px rgba(0,0,0,0.3);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}ul{list-style:none;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg-2);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(255,255,255,0.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
+[data-theme="dark"] .navbar{background:rgba(12,13,16,0.88);}
+.logo{font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text);}.logo em{font-style:normal;color:var(--accent);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--text-2);padding:6px 12px;border-radius:7px;transition:color .2s,background .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--accent-lt);}
+.nav-actions{display:flex;gap:8px;align-items:center;}
+.btn-ghost{font-size:13.5px;font-weight:500;color:var(--text-2);padding:6px 14px;border-radius:7px;border:1px solid var(--border);background:transparent;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text-3);}
+.btn-solid{font-size:13.5px;font-weight:600;color:#fff;padding:7px 18px;border-radius:7px;background:var(--accent);border:none;cursor:pointer;transition:background .2s;font-family:'Inter',sans-serif;}
+.btn-solid:hover{background:var(--accent-h);}
+.theme-btn{width:34px;height:34px;border-radius:7px;border:1px solid var(--border);background:var(--bg-2);color:var(--text-3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s;}
+.theme-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-lt);}
+.hamburger{display:none;background:none;border:none;font-size:20px;color:var(--text);cursor:pointer;padding:7px;border-radius:7px;}
+.hamburger:hover{background:var(--bg-2);}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);z-index:1998;}
+.mob-overlay.on{display:block;}
+.mob-menu{position:fixed;top:0;right:-100%;width:272px;height:100%;background:var(--surface);border-left:1px solid var(--border);padding:22px 20px;z-index:1999;transition:right .35s cubic-bezier(.77,0,.175,1);}
+.mob-menu.on{right:0;}
+.mob-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+.mob-close{background:none;border:none;font-size:18px;color:var(--text-3);cursor:pointer;}
+.mob-menu nav a{display:block;padding:11px 0;font-size:14.5px;font-weight:500;color:var(--text-2);border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s;}
+.mob-menu nav a:hover{color:var(--accent);padding-left:6px;}
+.mob-auth{margin-top:22px;display:flex;flex-direction:column;gap:10px;}
+.mob-auth .btn-ghost,.mob-auth .btn-solid{width:100%;text-align:center;padding:11px;}
+/* PAGE HERO */
+.page-hero{padding:120px 52px 60px;background:var(--bg-2);border-bottom:1px solid var(--border);}
+.page-hero .wrap{max-width:1160px;margin:0 auto;}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.page-hero h1{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.045em;line-height:1.08;margin-bottom:14px;}
+.page-hero h1 span{color:var(--accent);}
+.page-hero p{font-size:16px;color:var(--text-2);line-height:1.75;max-width:520px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-3);margin-bottom:18px;}
+.breadcrumb a{color:var(--accent);font-weight:500;}
+.breadcrumb i{font-size:9px;}
+/* STORE */
+.wrap{max-width:1160px;margin:0 auto;}
+.store-section{padding:64px 52px 96px;background:var(--bg);}
+.store-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:40px;}
+.store-filter{display:flex;gap:8px;flex-wrap:wrap;}
+.filter-btn{font-size:12.5px;font-weight:600;padding:7px 16px;border-radius:50px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-2);cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.store-count{font-size:13px;color:var(--text-3);font-weight:500;}
+.store-count span{color:var(--accent);font-weight:700;}
+.store-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.prod-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .25s,border-color .25s,transform .25s;display:flex;flex-direction:column;}
+.prod-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--accent);}
+.prod-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+.prod-badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;background:var(--accent);color:#fff;padding:3px 9px;border-radius:50px;letter-spacing:.04em;}
+.prod-badge.new{background:#22c55e;}.prod-badge.sale{background:#f59e0b;}
+.prod-body{padding:18px;flex:1;display:flex;flex-direction:column;}
+.prod-cat{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.prod-body h3{font-size:14.5px;font-weight:700;letter-spacing:-.02em;margin-bottom:7px;}
+.prod-body p{font-size:12.5px;color:var(--text-2);line-height:1.65;flex:1;margin-bottom:14px;}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;}
+.prod-price{font-size:16px;font-weight:800;letter-spacing:-.03em;}
+.prod-price span{font-size:12px;font-weight:500;color:var(--text-3);text-decoration:line-through;margin-left:5px;}
+.btn-cart{font-size:12px;font-weight:600;padding:7px 14px;border-radius:7px;background:var(--accent-lt);color:var(--accent);border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+.btn-cart:hover{background:var(--accent);color:#fff;}
+/* FOOTER */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52px 32px;}
+.footer-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr 1.5fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--border);}
+.footer-brand .logo{font-size:19px;margin-bottom:13px;}
+.footer-brand p{font-size:13px;color:var(--text-3);line-height:1.7;max-width:230px;margin-bottom:18px;}
+.socials{display:flex;gap:7px;}
+.soc-btn{width:32px;height:32px;border-radius:7px;border:1px solid var(--border);background:var(--bg);color:var(--text-3);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
+.soc-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-lt);}
+.f-col h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:16px;}
+.f-col ul{display:flex;flex-direction:column;gap:9px;}.f-col a{font-size:13.5px;color:var(--text-3);transition:color .2s;}.f-col a:hover{color:var(--accent);}
+.nl-row{display:flex;gap:7px;margin-top:4px;}.nl-row input{flex:1;padding:8px 13px;background:var(--bg);border:1px solid var(--border);border-radius:7px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s;}.nl-row input::placeholder{color:var(--text-3);}.nl-row input:focus{border-color:var(--accent);}
+.nl-row button{padding:8px 14px;background:var(--accent);color:#fff;border:none;border-radius:7px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;}.nl-row button:hover{background:var(--accent-h);}
+.f-contact{margin-top:18px;display:flex;flex-direction:column;gap:7px;}.f-contact span{font-size:13px;color:var(--text-3);display:flex;align-items:center;gap:8px;}.f-contact i{color:var(--accent);width:12px;}
+.footer-bot{max-width:1160px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}.footer-bot p{font-size:12.5px;color:var(--text-3);}.f-legal{display:flex;gap:20px;}.f-legal a{font-size:12.5px;color:var(--text-3);transition:color .2s;}.f-legal a:hover{color:var(--accent);}
+.back-top{position:fixed;bottom:26px;right:26px;width:38px;height:38px;border-radius:9px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;z-index:500;border:none;opacity:0;transform:translateY(10px);transition:all .3s;box-shadow:0 4px 12px rgba(0,82,204,.28);}.back-top.on{opacity:1;transform:translateY(0);}.back-top:hover{background:var(--accent-h);}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}.rev.in{opacity:1;transform:translateY(0);}
+@media(max-width:1040px){.store-grid{grid-template-columns:repeat(2,1fr);}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:760px){.navbar{padding:0 18px;}.nav-links,.nav-actions .btn-ghost,.nav-actions .btn-solid{display:none;}.hamburger{display:block;}.page-hero{padding:100px 18px 48px;}.store-section{padding:48px 18px 80px;}footer{padding:56px 18px 28px;}.footer-grid{grid-template-columns:1fr;gap:32px;}.footer-bot{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.store-grid{grid-template-columns:1fr;}}
+
+.hero-img {
+  width: 60%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-visual {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
+<div class="mob-menu" id="mobM">
+  <div class="mob-head"><div class="logo">Wi<em>per</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <nav>
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="store.html" onclick="closeMenu()">Store</a>
+    <a href="prompts.html" onclick="closeMenu()">Prompts</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
+  </nav>
+  <div class="mob-auth"><button class="btn-ghost">Log In</button><button class="btn-solid">Get Started</button></div>
+</div>
+
+<nav class="navbar" id="top">
+  <div class="logo">Neko<em>tech</em></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="store.html" class="active">Store</a></li>
+    <li><a href="prompts.html">Prompts</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" id="tBtn"><i class="fas fa-moon" id="tIco"></i></button>
+    <button class="btn-ghost">Log In</button>
+    <button class="btn-solid">Get Started</button>
+    <button class="hamburger" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+
+    <div class="hero-content">
+
+      <!-- LEFT: TEXT -->
+      <div class="hero-text">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Store</span>
+        </div>
+
+        <div class="eyebrow">Tech Store</div>
+
+        <h1>
+          Premium tech products<br>
+          for the <span>modern world</span>
+        </h1>
+
+        <p>
+          Explore our curated selection of cutting edge gadgets and smart devices all tested and trusted by wiper digital.
+        </p>
+      </div>
+
+      <!-- RIGHT: IMAGE -->
+      <div class="hero-visual">
+        <img src="PHOTO/hero03.png" alt="Hero Image" class="hero-img">
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="store-section">
+  <div class="wrap">
+    <div class="store-controls">
+      <div class="store-filter">
+        <button class="filter-btn active" onclick="filterStore('all',this)">All Products</button>
+        <button class="filter-btn" onclick="filterStore('camera',this)"><i class="fas fa-camera" style="font-size:11px;margin-right:4px;"></i>Cameras</button>
+        <button class="filter-btn" onclick="filterStore('smart-home',this)"><i class="fas fa-home" style="font-size:11px;margin-right:4px;"></i>Smart Home</button>
+        <button class="filter-btn" onclick="filterStore('peripherals',this)"><i class="fas fa-keyboard" style="font-size:11px;margin-right:4px;"></i>Peripherals</button>
+        <button class="filter-btn" onclick="filterStore('audio',this)"><i class="fas fa-headphones" style="font-size:11px;margin-right:4px;"></i>Audio</button>
+      </div>
+      <div class="store-count">Showing <span id="visCount">8</span> products</div>
+    </div>
+
+    <div class="store-grid">
+      <div class="prod-card rev" data-cat="camera">
+        <div class="prod-img" style="background:linear-gradient(135deg,#e8f0fe,#c7d8fd);">📷<span class="prod-badge new">New</span></div>
+        <div class="prod-body"><div class="prod-cat">Camera</div><h3>Nexo SmartCam 4K</h3><p>AI-powered 4K smart security camera with night vision, motion detection, and 360° pan-tilt control.</p><div class="prod-foot"><div class="prod-price">$129 <span>$159</span></div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="smart-home" style="transition-delay:.07s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#fef9e8,#fde8a0);">💡</div>
+        <div class="prod-body"><div class="prod-cat">Smart Home</div><h3>Nebular Smart Bulb</h3><p>16 million colours, voice-control ready, and app-controlled ambiance for every mood and moment.</p><div class="prod-foot"><div class="prod-price">$24</div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="peripherals" style="transition-delay:.14s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#e8fdf0,#a0fcc8);">🖱️<span class="prod-badge sale">Sale</span></div>
+        <div class="prod-body"><div class="prod-cat">Peripherals</div><h3>NexoGlide Pro Mouse</h3><p>Ergonomic wireless mouse with 8000 DPI precision sensor, silent clicks, and 90-day battery life.</p><div class="prod-foot"><div class="prod-price">$49 <span>$75</span></div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="audio" style="transition-delay:.21s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#fde8f0,#fca0c8);">🔊</div>
+        <div class="prod-body"><div class="prod-cat">Audio</div><h3>Nexo Pulse Speaker</h3><p>360° immersive sound with built-in AI assistant, AUX & Bluetooth 5.3, waterproof design.</p><div class="prod-foot"><div class="prod-price">$89</div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="smart-home" style="transition-delay:.07s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#e8f7fd,#a0d8fc);">🌡️<span class="prod-badge new">New</span></div>
+        <div class="prod-body"><div class="prod-cat">Smart Home</div><h3>NekoTherm Thermostat</h3><p>AI-learning thermostat that adapts to your schedule, slashes energy bills, and works with any HVAC system.</p><div class="prod-foot"><div class="prod-price">$179</div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="peripherals" style="transition-delay:.14s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#f3e8fd,#d8a0fc);">⌨️</div>
+        <div class="prod-body"><div class="prod-cat">Peripherals</div><h3>NexoKeys Slim Keyboard</h3><p>Ultra-thin mechanical keyboard with RGB backlight, multi-device pairing, and whisper-quiet switches.</p><div class="prod-foot"><div class="prod-price">$65 <span>$85</span></div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="camera" style="transition-delay:.07s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#e8f0fe,#b0c6fd);">🔔</div>
+        <div class="prod-body"><div class="prod-cat">Camera</div><h3>Nexo DoorView Cam</h3><p>Smart video doorbell with 180° wide-angle lens, two-way audio, and instant smartphone alerts.</p><div class="prod-foot"><div class="prod-price">$99</div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+      <div class="prod-card rev" data-cat="audio" style="transition-delay:.14s">
+        <div class="prod-img" style="background:linear-gradient(135deg,#fdf3e8,#fcc8a0);">🎧<span class="prod-badge sale">Sale</span></div>
+        <div class="prod-body"><div class="prod-cat">Audio</div><h3>NekoBuds Pro ANC</h3><p>Active noise-cancelling earbuds with 36hr total battery, transparency mode, and studio-grade sound.</p><div class="prod-foot"><div class="prod-price">$119 <span>$149</span></div><button class="btn-cart"><i class="fas fa-cart-plus"></i> Add</button></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo">Wiper<em>digital</em></div><p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p><div class="socials"><a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a><a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a><a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="store.html">Store</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="web-development.html">Web Development</a></li><li><a href="brand-identity.html">Brand Identity</a></li><li><a href="digital-marketing.html">Digital Marketing</a></li><li><a href="mobile-application.html">Mobile Apps</a></li><li><a href="seo-analytics.html">SEO & Analytics</a></li></ul></div>
+    <div class="f-col"><h4>Newsletter</h4><p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth no spam, ever.</p><div class="nl-row"><input type="email" placeholder="you@company.com"><button>Subscribe</button></div><div class="f-contact"><span><i class="fas fa-envelope"></i>info@wiperdigital.com</span><span><i class="fas fa-phone"></i>+255 769 256 157</span><span><i class="fas fa-map-marker-alt"></i>Dodoma, Tanzania</span></div></div>
+  </div>
+  <div class="footer-bot"><p>© 2026 wiper digital. All rights reserved.</p><div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div></div>
+</footer>
+
+<script>
+const html=document.documentElement,tBtn=document.getElementById('tBtn'),tIco=document.getElementById('tIco');
+tBtn.addEventListener('click',()=>{const dark=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',dark?'light':'dark');tIco.className=dark?'fas fa-moon':'fas fa-sun';});
+function openMenu(){document.getElementById('mobM').classList.add('on');document.getElementById('mobOv').classList.add('on');}
+function closeMenu(){document.getElementById('mobM').classList.remove('on');document.getElementById('mobOv').classList.remove('on');}
+window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('on',scrollY>400));
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function filterStore(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards=document.querySelectorAll('.prod-card');
+  let count=0;
+  cards.forEach(c=>{const show=cat==='all'||c.dataset.cat===cat;c.style.display=show?'flex':'none';if(show)count++;});
+  document.getElementById('visCount').textContent=count;
+}
+document.querySelectorAll('.btn-cart').forEach(btn=>{
+  btn.addEventListener('click',function(){this.innerHTML='<i class="fas fa-check"></i> Added!';this.style.background='#22c55e';this.style.color='#fff';
+  setTimeout(()=>{this.innerHTML='<i class="fas fa-cart-plus"></i> Add';this.style.background='';this.style.color='';},1800);});
+});
+</script>
+</body>
+</html>

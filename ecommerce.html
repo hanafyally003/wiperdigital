@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce wiper digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
+<div class="mob-menu" id="mobM">
+  <div class="mob-head"><div class="logo">Wi<em>per</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <nav>
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="store.html" onclick="closeMenu()">Store</a>
+    <a href="prompts.html" onclick="closeMenu()">Prompts</a>
+    <a href="contact.html" onclick="closeMenu()">Contact</a>
+  </nav>
+  <div class="mob-auth"><button class="btn-ghost">Log In</button><button class="btn-solid">Get Started</button></div>
+</div>
+
+<nav class="navbar" id="top">
+  <div class="logo">Neko<em>tech</em></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html"  class="active">Services</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="prompts.html">Prompts</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" id="tBtn"><i class="fas fa-moon" id="tIco"></i></button>
+    <button class="btn-ghost">Log In</button>
+    <button class="btn-solid">Get Started</button>
+    <button class="hamburger" onclick="openMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><a href="index.html#services">Services</a><i class="fas fa-chevron-right"></i><span style="color:var(--text)">E-Commerce</span></div>
+
+<div style="max-width:1160px;margin:0 auto;">
+<div class="svc-hero">
+  <div class="svc-hero-text">
+    <div class="svc-badge"><i class="fas fa-store"></i> E-Commerce</div>
+    <h1>Online stores built to <span>sell, scale & delight</span></h1>
+    <p>We build high converting e-commerce experiences from product discovery to checkout that turn browsers into buyers and buyers into loyal customers who come back again and again.</p>
+    <div class="hero-btns"><button class="btn-primary">Build My Store <i class="fas fa-arrow-right"></i></button><button class="btn-outline">View Store Examples</button></div>
+  </div>
+      <div class="hero-visual">
+  <img src="PHOTO/hero03.png" alt="Hero Image" class="hero-img">
+</div>
+</div>
+</div>
+
+<section style="background:var(--bg);padding:72px 52px;"><div class="wrap">
+  <div class="eyebrow rev">What's Included</div><h2 class="sec-h rev">Everything your store needs to win</h2><p class="sec-p rev">We build end-to-end e-commerce solutions from the storefront to the back office so you can focus on selling.</p>
+  <div class="feat-grid">
+    <div class="feat-card rev"><div class="feat-icon"><i class="fas fa-shopping-cart"></i></div><h3>Conversion-Optimised Design</h3><p>Product pages, collection layouts, and checkout flows designed to maximise add to cart and purchase rates.</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-credit-card"></i></div><h3>Seamless Checkout</h3><p>One page checkout, guest checkout, buy-now-pay-later, and 15+ payment gateway integrations including Stripe and PayPal.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-boxes"></i></div><h3>Inventory Management</h3><p>Real-time stock tracking, variant management, low-stock alerts, and integrations with Shopify, WooCommerce, or headless.</p></div>
+    <div class="feat-card rev" style="transition-delay:.06s"><div class="feat-icon"><i class="fas fa-truck"></i></div><h3>Shipping & Fulfilment</h3><p>Automated shipping rules, carrier integrations (FedEx, UPS, DHL), order tracking pages, and returns management.</p></div>
+    <div class="feat-card rev" style="transition-delay:.12s"><div class="feat-icon"><i class="fas fa-chart-pie"></i></div><h3>Analytics & Reporting</h3><p>Revenue dashboards, cohort analysis, product performance reports, and abandoned cart tracking to guide decisions.</p></div>
+    <div class="feat-card rev" style="transition-delay:.18s"><div class="feat-icon"><i class="fas fa-redo"></i></div><h3>Retention & Email</h3><p>Abandoned cart recovery, post-purchase sequences, loyalty programs, and product review automations to maximise LTV.</p></div>
+  </div>
+</div></section>
+
+<section class="process"><div class="wrap">
+  <div class="eyebrow rev">How We Work</div><h2 class="sec-h rev">From store brief to first sale</h2><p class="sec-p rev">A structured 4 phase process to get your store live, converting, and growing as fast as possible.</p>
+  <div class="steps rev">
+    <div class="step"><div class="step-num">1</div><h3>Strategy & Platform</h3><p>We define your ideal platform (Shopify, WooCommerce, custom), integrations, and conversion strategy before any design begins.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Design & UX</h3><p>Conversion focused designs: homepage, collection, product, cart, and checkout — all A/B tested before development.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Build & Integrate</h3><p>Development, payment gateway setup, shipping configuration, inventory import, and all third party integrations.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Launch & Optimise</h3><p>QA testing, staff training, launch, and ongoing CRO we keep improving your conversion rate after go live.</p></div>
+  </div>
+</div></section>
+
+<section style="background:var(--bg);padding:80px 52px;"><div class="wrap"><div class="split">
+  <div class="split-text">
+    <div class="eyebrow rev">Why It Matters</div><h2 class="sec-h rev">Small improvements in conversion = big gains in revenue</h2>
+    <p class="sec-p rev">Most e-commerce stores are leaking revenue through poor UX, slow load times, and friction-filled checkouts. We fix that and the results are immediate.</p>
+    <div class="split-list rev">
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>A <strong>1-second improvement in load time</strong> increases conversions by up to 7% (Google).</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p><strong>70% of carts</strong> are abandoned proper email flows recover 5–15% of lost revenue.</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>Our average client sees a <strong>conversion rate increase of 40–80%</strong> within 6 months.</p></div>
+      <div class="split-item"><div class="s-check"><i class="fas fa-check"></i></div><p>Mobile-optimised checkout alone can <strong>increase mobile revenue by 35%</strong>.</p></div>
+    </div>
+    <button class="btn-primary rev">Build My Store <i class="fas fa-arrow-right"></i></button>
+  </div>
+      <div class="hero-visual">
+  <img src="PHOTO/hero03.png" alt="Hero Image" class="hero-img">
+</div>
+</div></div></section>
+
+<section style="background:var(--bg);padding:80px 52px;"><div class="wrap" style="max-width:760px;">
+  <div class="eyebrow rev">FAQ</div><h2 class="sec-h rev">Common questions</h2>
+  <div class="faq-list rev">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which e-commerce platform do you recommend? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Shopify is our top recommendation for most stores — it's the fastest to launch, easiest to manage, and has the largest app ecosystem. We also build on WooCommerce for WordPress-based businesses, and custom headless solutions for large-scale or complex requirements.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you migrate my existing store? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes. We handle full migrations including products, collections, customer data, and order history. We also set up 301 redirects and run an SEO audit post-migration to protect your search rankings.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will I be able to manage it myself? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. We build on platforms specifically chosen for their ease of management. We also provide hands-on training so you and your team can confidently add products, run promotions, and review reports without needing a developer.</p></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer ongoing store management? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Yes — we offer ongoing e-commerce management retainers covering CRO testing, email marketing, paid advertising management, and technical support. Ask us about our Growth Retainer plans.</p></div></div>
+  </div>
+</div></section>
+
+<div class="cta-band rev"><div class="cta-inner"><div><h2>Ready to build a store that actually sells?</h2><p>Book a free 30-minute e-commerce strategy session.</p></div> <a href="https://wa.me/255769156157"button class="btn-white">Message us now <i class="fas fa-arrow-right"></i></button></div></div></a>
+
+<section class="other-svc"><div class="wrap"><div class="eyebrow rev">Explore More</div><h2 class="sec-h rev">Our other services</h2><div class="other-grid rev"><a href="web-development.html" class="other-card"><i class="fas fa-code"></i><h4>Web Development</h4><p>Fast, modern websites</p></a><a href="brand-identity.html" class="other-card"><i class="fas fa-pen-nib"></i><h4>Brand Identity</h4><p>Logos & guidelines</p></a><a href="digital-marketing.html" class="other-card"><i class="fas fa-chart-bar"></i><h4>Digital Marketing</h4><p>SEO, PPC & social</p></a><a href="mobile-applications.html" class="other-card"><i class="fas fa-mobile-alt"></i><h4>Mobile Apps</h4><p>iOS & Android apps</p></a><a href="seo-analytics.html" class="other-card"><i class="fas fa-search"></i><h4>SEO & Analytics</h4><p>Rank & grow</p></a></div></div></section>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo">Wi<em>per</em></div><p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p><div class="socials"><a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a><a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a><a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="store.html">Store</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="f-col"><h4>Services</h4><ul><li><a href="web-development.html">Web Development</a></li><li><a href="brand-identity.html">Brand Identity</a></li><li><a href="digital-marketing.html">Digital Marketing</a></li><li><a href="mobile-applications.html">Mobile Apps</a></li><li><a href="seo-analytics.html">SEO & Analytics</a></li></ul></div>
+    <div class="f-col"><h4>Newsletter</h4><p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth — no spam, ever.</p><div class="nl-row"><input type="email" placeholder="you@company.com"><button>Subscribe</button></div><div class="f-contact"><span><i class="fas fa-envelope"></i>wiperdigital.com</span><span><i class="fas fa-phone"></i>+255 769 156 157</span><span><i class="fas fa-map-marker-alt"></i>Dodoma, Tanzania</span></div></div>
+  </div>
+  <div class="footer-bot"><p>© 2026 wiperdigital. All rights reserved.</p><div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div></div>
+</footer>
+
+<script>
+const html=document.documentElement,tBtn=document.getElementById('tBtn'),tIco=document.getElementById('tIco');
+tBtn.addEventListener('click',()=>{const d=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',d?'light':'dark');tIco.className=d?'fas fa-moon':'fas fa-sun';});
+function openMenu(){document.getElementById('mobM').classList.add('on');document.getElementById('mobOv').classList.add('on');}
+function closeMenu(){document.getElementById('mobM').classList.remove('on');document.getElementById('mobOv').classList.remove('on');}
+window.addEventListener('scroll',()=>document.getElementById('btt').classList.toggle('on',scrollY>400));
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+function toggleFaq(btn){const a=btn.nextElementSibling;const open=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}}
+</script>
+</body></html>
