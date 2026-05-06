@@ -90,6 +90,33 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 @media(max-width:1040px){.prompt-panel.active{grid-template-columns:repeat(2,1fr);}.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:760px){.navbar{padding:0 18px;}.nav-links,.nav-actions .btn-ghost,.nav-actions .btn-solid{display:none;}.hamburger{display:block;}.page-hero{padding:100px 18px 48px;}.prompts-section{padding:48px 18px 80px;}footer{padding:56px 18px 28px;}.footer-grid{grid-template-columns:1fr;gap:32px;}.footer-bot{flex-direction:column;text-align:center;}}
 @media(max-width:560px){.prompt-panel.active{grid-template-columns:1fr;}}
+
+
+.pm-preview {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.pm-preview img.pm-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes it look like your SVG preview */
+  display: block;
+}
+
+.pm-preview-label {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(0,0,0,0.4);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
 </style>
 </head>
 <body>
@@ -97,9 +124,10 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 <button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 <div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
 <div class="mob-menu" id="mobM">
-  <div class="mob-head"><div class="logo">Neko<em>tech</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <div class="mob-head"><div class="logo">Wi<em>per</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
   <nav>
     <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="services.html" onclick="closeMenu()">Services</a>
     <a href="store.html" onclick="closeMenu()">Store</a>
     <a href="prompts.html" onclick="closeMenu()">Prompts</a>
     <a href="contact.html" onclick="closeMenu()">Contact</a>
@@ -128,8 +156,8 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Prompts</span></div>
     <div class="eyebrow">AI Prompt Library</div>
-    <h1>Ready-to-use prompts for<br>every <span>creative need</span></h1>
-    <p>Browse our curated prompt library — organised by category so you can find and use the perfect prompt instantly.</p>
+    <h1>Ready to use prompts for<br>every <span>creative need</span></h1>
+    <p>Browse our curated prompt library organised by category so you can find and use the perfect prompt instantly.</p>
   </div>
 </div>
 
@@ -148,27 +176,16 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="sky1" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="#ffd580"/><stop offset="60%" stop-color="#ff9a56"/><stop offset="100%" stop-color="#c0392b"/></radialGradient></defs>
-            <rect width="340" height="160" fill="url(#sky1)"/>
-            <ellipse cx="170" cy="70" rx="38" ry="38" fill="#ffe066" opacity=".85"/>
-            <ellipse cx="60" cy="90" rx="60" ry="35" fill="rgba(255,255,255,.12)"/>
-            <ellipse cx="280" cy="75" rx="45" ry="28" fill="rgba(255,255,255,.10)"/>
-            <!-- silhouette person -->
-            <ellipse cx="170" cy="120" rx="14" ry="16" fill="#1a0a00" opacity=".8"/>
-            <circle cx="170" cy="100" r="8" fill="#1a0a00" opacity=".8"/>
-            <!-- bokeh circles -->
-            <circle cx="40" cy="40" r="10" fill="#ffe066" opacity=".3"/>
-            <circle cx="300" cy="130" r="7" fill="#ffb347" opacity=".25"/>
-            <circle cx="15" cy="140" r="5" fill="#ffd580" opacity=".2"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Portrait · Golden Hour · Bokeh</text>
-          </svg>
+         <div class="pm-preview">
+  <img src="PHOTO/street01.jpg" alt="Preview Image" class="pm-image">
+  <span class="pm-preview-label">Preview</span>
+</div>
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
           <span class="pm-tag">Portrait</span>
-          <h4>Cinematic Portrait Shot</h4>
-          <p>A cinematic close-up portrait of a [person] in golden hour lighting, shallow depth of field, 85mm lens, soft bokeh background, highly detailed skin texture, award-winning photography.</p>
+          <h4>Cinematic photo</h4>
+          <p>Create a cinematic photorealistic street portrait of a young man leaning casually on a metal roadside railing in a busy urban city, wearing a black windbreaker jacket and a backward black cap, low taper fade hairstyle visible from under the cap, calm thoughtful expression, side-angle candid pose, elevated overpass in background, blurred red and blue cars, traffic cones, soft overcast daylight, muted gray cinematic tones, shallow depth of field, creamy bokeh, DSLR 85mm lens look, ultra-detailed skin texture, realistic jacket folds, stylish melancholic city atmosphere, professional street fashion photography, 8k, highly realistic, moody urban editorial style.</p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.4k uses</span></div>
         </div>
       </div>
@@ -196,7 +213,12 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
         <div class="pm-body">
           <span class="pm-tag">Landscape</span>
           <h4>Epic Landscape Scene</h4>
-          <p>An ultra-wide aerial photograph of [location] at sunrise, dramatic clouds, volumetric light rays piercing through mountains, 8K resolution, hyper-realistic, National Geographic style.</p>
+          <p>Create a photo of moody, low-angle portrait of a handsome young man (from uploaded image) with dark, styled hair, sitting relaxed in a wooden chair at a cafe table.
+He is wearing a printed black oversized t-shirt and very baggy, dark denim jeans, silver long chain on neck out of shirt, wrist black watch. He rests his elbow on the chair and looks directly at the camera with a confident expression.
+The background wall is decorated with a vibrant, dense collage of vintage comic book and music posters, including Batman, The Beatles, and The Rolling Stones (red tongue logo). The scene is warmly lit by a hanging industrial lamp overhead, creating high contrast. In the 
+
+foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high detail, warm tones, late-night cafe atmosphere.
+</p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">1.8k uses</span></div>
         </div>
       </div>
