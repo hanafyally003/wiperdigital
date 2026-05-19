@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompts wiper digital</title>
+<title>Prompts — Wiper Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -58,19 +58,61 @@ a{text-decoration:none;color:inherit;}ul{list-style:none;}
 /* PANEL */
 .prompt-panel{display:none;}
 .prompt-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-/* CARD */
-.pm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .25s,border-color .25s,transform .25s;position:relative;}
+/* CARD — fixed size, text clipped */
+.pm-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  transition:box-shadow .25s,border-color .25s,transform .25s;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  height:400px; /* fixed card height */
+}
 .pm-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--accent);}
 /* PREVIEW IMAGE */
-.pm-preview{width:100%;height:160px;overflow:hidden;position:relative;background:var(--bg-2);}
+.pm-preview{
+  width:100%;
+  height:160px;
+  min-height:160px;
+  max-height:160px;
+  overflow:hidden;
+  position:relative;
+  background:var(--bg-2);
+  flex-shrink:0;
+}
+.pm-preview img.pm-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .pm-preview svg{width:100%;height:100%;}
 .pm-preview-label{position:absolute;bottom:8px;left:10px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);padding:3px 8px;border-radius:5px;}
-/* CARD BODY */
-.pm-body{padding:18px;}
-.pm-tag{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-lt);border-radius:5px;padding:3px 9px;display:inline-block;margin-bottom:10px;}
-.pm-card h4{font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;}
-.pm-card p{font-size:12.5px;color:var(--text-2);line-height:1.65;margin-bottom:14px;}
-.pm-foot{display:flex;align-items:center;justify-content:space-between;}
+/* CARD BODY — fixed, overflow hidden */
+.pm-body{
+  padding:18px;
+  flex:1;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.pm-tag{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-lt);border-radius:5px;padding:3px 9px;display:inline-block;margin-bottom:10px;flex-shrink:0;}
+.pm-card h4{font-size:14px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;flex-shrink:0;}
+.pm-card p{
+  font-size:12.5px;
+  color:var(--text-2);
+  line-height:1.65;
+  margin-bottom:14px;
+  flex:1;
+  overflow:hidden;
+  /* clamp text overflow — hidden but not scrollable */
+  display:-webkit-box;
+  -webkit-line-clamp:4;
+  -webkit-box-orient:vertical;
+}
+.pm-foot{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;margin-top:auto;}
 .pm-copy{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-lt);border:none;border-radius:6px;padding:6px 13px;cursor:pointer;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:5px;transition:all .2s;}
 .pm-copy:hover{background:var(--accent);color:#fff;}
 .pm-copy.copied{background:#22c55e;color:#fff;}
@@ -89,34 +131,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 .rev{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}.rev.in{opacity:1;transform:translateY(0);}
 @media(max-width:1040px){.prompt-panel.active{grid-template-columns:repeat(2,1fr);}.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:760px){.navbar{padding:0 18px;}.nav-links,.nav-actions .btn-ghost,.nav-actions .btn-solid{display:none;}.hamburger{display:block;}.page-hero{padding:100px 18px 48px;}.prompts-section{padding:48px 18px 80px;}footer{padding:56px 18px 28px;}.footer-grid{grid-template-columns:1fr;gap:32px;}.footer-bot{flex-direction:column;text-align:center;}}
-@media(max-width:560px){.prompt-panel.active{grid-template-columns:1fr;}}
-
-
-.pm-preview {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.pm-preview img.pm-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes it look like your SVG preview */
-  display: block;
-}
-
-.pm-preview-label {
-  position: absolute;
-  bottom: 8px;
-  left: 10px;
-  color: #fff;
-  font-size: 12px;
-  background: rgba(0,0,0,0.4);
-  padding: 2px 6px;
-  border-radius: 6px;
-}
+@media(max-width:560px){.prompt-panel.active{grid-template-columns:1fr;}.pm-card{height:auto;}.pm-card p{-webkit-line-clamp:6;}}
 </style>
 </head>
 <body>
@@ -124,7 +139,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 <button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 <div class="mob-overlay" id="mobOv" onclick="closeMenu()"></div>
 <div class="mob-menu" id="mobM">
-  <div class="mob-head"><div class="logo">Wi<em>per</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
+  <div class="mob-head"><div class="logo">Wiper<em>Digital</em></div><button class="mob-close" onclick="closeMenu()"><i class="fas fa-times"></i></button></div>
   <nav>
     <a href="index.html" onclick="closeMenu()">Home</a>
     <a href="services.html" onclick="closeMenu()">Services</a>
@@ -136,7 +151,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 </div>
 
 <nav class="navbar" id="top">
-  <div class="logo">Wi<em>per</em></div>
+  <div class="logo">Wiper<em>Digital</em></div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -166,81 +181,59 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:64px 52
 
     <div class="prompt-tabs rev">
       <button class="ptab active" onclick="switchTab('photo',this)"><i class="fas fa-image"></i> Photo Generation</button>
-      <button class="ptab" onclick="switchTab('web',this)"><i class="fas fa-code"></i> Web & Tech</button>
+      <button class="ptab" onclick="switchTab('web',this)"><i class="fas fa-code"></i> Web &amp; Tech</button>
       <button class="ptab" onclick="switchTab('video',this)"><i class="fas fa-video"></i> Video Generation</button>
       <button class="ptab" onclick="switchTab('docs',this)"><i class="fas fa-file-alt"></i> Documents</button>
     </div>
 
-    <!-- ═══ PHOTO GENERATION ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         PHOTO GENERATION TAB
+         ───────────────────────────────────────────────
+         TO ADD MORE CARDS: copy one block between
+         "PHOTO CARD START" and "PHOTO CARD END"
+         and paste it before the closing </div> below.
+         Change the tag, title, prompt text, and image src.
+    ════════════════════════════════════════════════ -->
     <div class="prompt-panel active" id="tab-photo">
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-         <div class="pm-preview">
-  <img src="PHOTO/street01.jpg" alt="Preview Image" class="pm-image">
-  <span class="pm-preview-label">Preview</span>
-</div>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/street01.jpg" alt="Cinematic Street Portrait" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
           <span class="pm-tag">Portrait</span>
-          <h4>Cinematic photo</h4>
-          <p>Create a cinematic photorealistic street portrait of a young man leaning casually on a metal roadside railing in a busy urban city, wearing a black windbreaker jacket and a backward black cap, low taper fade hairstyle visible from under the cap, calm thoughtful expression, side-angle candid pose, elevated overpass in background, blurred red and blue cars, traffic cones, soft overcast daylight, muted gray cinematic tones, shallow depth of field, creamy bokeh, DSLR 85mm lens look, ultra-detailed skin texture, realistic jacket folds, stylish melancholic city atmosphere, professional street fashion photography, 8k, highly realistic, moody urban editorial style.</p>
+          <h4>Create a cinematic Street Portrait</h4>
+          <p>A cinematic photorealistic street portrait of a young man leaning casually on a metal roadside railing in a busy urban city, wearing a black windbreaker jacket and a backward black cap, low taper fade hairstyle visible from under the cap, calm thoughtful expression, side-angle candid pose, elevated overpass in background, blurred red and blue cars, traffic cones, soft overcast daylight, muted gray cinematic tones, shallow depth of field, creamy bokeh, DSLR 85mm lens look, ultra-detailed skin texture, realistic jacket folds, stylish melancholic city atmosphere, professional street fashion photography, 8k, highly realistic, moody urban editorial style.
+          </p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.4k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="mtnsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2980"/><stop offset="50%" stop-color="#ff6b35"/><stop offset="100%" stop-color="#f7931e"/></linearGradient></defs>
-            <rect width="340" height="160" fill="url(#mtnsky)"/>
-            <!-- mountains -->
-            <polygon points="0,160 80,60 160,160" fill="#0d1b2a" opacity=".9"/>
-            <polygon points="100,160 200,40 300,160" fill="#0a1628" opacity=".95"/>
-            <polygon points="220,160 310,70 340,160" fill="#0d1b2a" opacity=".88"/>
-            <!-- sun rays -->
-            <ellipse cx="200" cy="42" rx="18" ry="18" fill="#ffdd57" opacity=".9"/>
-            <line x1="200" y1="10" x2="200" y2="0" stroke="#ffdd57" stroke-width="2" opacity=".5"/>
-            <line x1="225" y1="20" x2="235" y2="12" stroke="#ffdd57" stroke-width="1.5" opacity=".4"/>
-            <line x1="175" y1="20" x2="165" y2="12" stroke="#ffdd57" stroke-width="1.5" opacity=".4"/>
-            <!-- light rays -->
-            <polygon points="200,42 150,160 250,160" fill="#ffdd57" opacity=".08"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.75)" font-weight="600">Landscape · Aerial · 8K · Sunrise</text>
-          </svg>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/cafe01.jpg" alt="Cafe Portrait" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
-          <span class="pm-tag">Landscape</span>
-          <h4>Epic Landscape Scene</h4>
-          <p>Create a photo of moody, low-angle portrait of a handsome young man (from uploaded image) with dark, styled hair, sitting relaxed in a wooden chair at a cafe table.
-He is wearing a printed black oversized t-shirt and very baggy, dark denim jeans, silver long chain on neck out of shirt, wrist black watch. He rests his elbow on the chair and looks directly at the camera with a confident expression.
-The background wall is decorated with a vibrant, dense collage of vintage comic book and music posters, including Batman, The Beatles, and The Rolling Stones (red tongue logo). The scene is warmly lit by a hanging industrial lamp overhead, creating high contrast. In the 
-
-foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high detail, warm tones, late-night cafe atmosphere.
-</p>
+          <span class="pm-tag">Lifestyle</span>
+          <h4>Cafe Lifestyle Portrait</h4>
+          <p>A moody, low-angle portrait of a handsome young man (from uploaded image) with dark, styled hair, sitting relaxed in a wooden chair at a cafe table. Wearing a printed black oversized t-shirt and very baggy dark denim jeans, silver long chain on neck, black wrist watch. He rests his elbow on the chair and looks directly at the camera with a confident expression. Background wall decorated with vibrant vintage comic book and music posters. Warmly lit by a hanging industrial lamp overhead, creating high contrast. Wooden table with ashtray and iced coffee. Cinematic, high detail, warm tones, late-night cafe atmosphere.</p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">1.8k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f0f0f0"/>
-            <!-- studio bg -->
-            <rect width="340" height="160" fill="#fafafa"/>
-            <ellipse cx="170" cy="200" rx="200" ry="100" fill="#e8e8e8" opacity=".8"/>
-            <!-- product: a perfume bottle -->
-            <rect x="140" y="40" width="60" height="90" rx="8" fill="white" stroke="#ddd" stroke-width="1.5"/>
-            <rect x="152" y="30" width="36" height="16" rx="5" fill="#e0e0e0" stroke="#ccc" stroke-width="1"/>
-            <rect x="160" y="20" width="20" height="14" rx="3" fill="#ccc"/>
-            <!-- reflection -->
-            <rect x="140" y="130" width="60" height="30" rx="4" fill="white" opacity=".3"/>
-            <!-- light bloom -->
-            <ellipse cx="110" cy="70" rx="40" ry="55" fill="white" opacity=".35"/>
-            <ellipse cx="260" cy="90" rx="30" ry="40" fill="white" opacity=".2"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Product · Studio · White BG · Sharp</text>
-          </svg>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/product01.jpg" alt="Studio Product Photography" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -250,59 +243,29 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">3.1k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="fant" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f0c29"/><stop offset="50%" stop-color="#302b63"/><stop offset="100%" stop-color="#24243e"/></linearGradient></defs>
-            <rect width="340" height="160" fill="url(#fant)"/>
-            <!-- floating islands -->
-            <ellipse cx="170" cy="90" rx="70" ry="20" fill="#3d2b6e" opacity=".9"/>
-            <rect x="130" y="70" width="80" height="22" rx="4" fill="#4a3580"/>
-            <!-- trees on island -->
-            <polygon points="165,70 170,45 175,70" fill="#22c55e" opacity=".8"/>
-            <polygon points="175,70 181,50 187,70" fill="#16a34a" opacity=".7"/>
-            <!-- glowing crystals -->
-            <polygon points="120,85 127,60 134,85" fill="#a855f7" opacity=".7"/>
-            <polygon points="200,82 206,62 212,82" fill="#6366f1" opacity=".65"/>
-            <!-- magic particles -->
-            <circle cx="85" cy="50" r="3" fill="#f0abfc" opacity=".7"/>
-            <circle cx="255" cy="40" r="2" fill="#a5f3fc" opacity=".6"/>
-            <circle cx="310" cy="70" r="2.5" fill="#fde68a" opacity=".5"/>
-            <circle cx="30" cy="100" r="2" fill="#f0abfc" opacity=".5"/>
-            <!-- moon -->
-            <circle cx="290" cy="25" r="15" fill="#fde68a" opacity=".8"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Fantasy · Floating Islands · Magic</text>
-          </svg>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/fantasy01.jpg" alt="Fantasy World Art" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
           <span class="pm-tag">Fantasy</span>
           <h4>Fantasy World Art</h4>
-          <p>A breathtaking fantasy landscape with floating islands, glowing crystals, and a magical forest below, painted in the style of a high-budget concept art, vibrant colors, epic scale.</p>
+          <p>A breathtaking fantasy landscape with floating islands, glowing crystals, and a magical forest below, painted in the style of high-budget concept art, vibrant colors, epic scale.</p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">4.2k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="arch" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#16213e"/></linearGradient></defs>
-            <rect width="340" height="160" fill="url(#arch)"/>
-            <!-- modern building -->
-            <rect x="90" y="30" width="160" height="120" rx="4" fill="#0f3460" stroke="#1e5f8f" stroke-width="1.5"/>
-            <!-- glass floors -->
-            <rect x="95" y="40" width="150" height="15" rx="2" fill="#1e8bc3" opacity=".4"/>
-            <rect x="95" y="60" width="150" height="15" rx="2" fill="#1e8bc3" opacity=".35"/>
-            <rect x="95" y="80" width="150" height="15" rx="2" fill="#1e8bc3" opacity=".3"/>
-            <rect x="95" y="100" width="150" height="15" rx="2" fill="#1e8bc3" opacity=".25"/>
-            <!-- trees -->
-            <ellipse cx="70" cy="130" rx="18" ry="24" fill="#22c55e" opacity=".7"/>
-            <ellipse cx="270" cy="128" rx="16" ry="22" fill="#16a34a" opacity=".6"/>
-            <!-- light glow -->
-            <ellipse cx="170" cy="150" rx="80" ry="20" fill="#1e8bc3" opacity=".15"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Architecture · Luxury · Night · Render</text>
-          </svg>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/architecture01.jpg" alt="Modern Architecture Render" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -312,24 +275,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.0k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
+      <!-- PHOTO CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d0d0d"/>
-            <!-- neon fluid waves -->
-            <path d="M0,100 Q85,30 170,80 Q255,130 340,50" fill="none" stroke="#a855f7" stroke-width="3" opacity=".9"/>
-            <path d="M0,110 Q85,55 170,100 Q255,145 340,70" fill="none" stroke="#6366f1" stroke-width="2.5" opacity=".75"/>
-            <path d="M0,90 Q85,20 170,65 Q255,110 340,35" fill="none" stroke="#ec4899" stroke-width="2" opacity=".6"/>
-            <!-- glow blobs -->
-            <ellipse cx="100" cy="75" rx="50" ry="30" fill="#a855f7" opacity=".12"/>
-            <ellipse cx="240" cy="90" rx="55" ry="35" fill="#6366f1" opacity=".12"/>
-            <!-- sparkles -->
-            <circle cx="50" cy="60" r="2.5" fill="#f0abfc" opacity=".8"/>
-            <circle cx="170" cy="80" r="3" fill="#c4b5fd" opacity=".9"/>
-            <circle cx="290" cy="55" r="2" fill="#a5f3fc" opacity=".7"/>
-            <text x="10" y="152" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Abstract · Neon · Fluid · Dark Mode</text>
-          </svg>
+          <!-- Replace src with your image path, e.g. src="PHOTO/your-image.jpg" -->
+          <img src="PHOTO/abstract01.jpg" alt="Abstract Digital Art" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -339,35 +291,26 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">1.5k uses</span></div>
         </div>
       </div>
+      <!-- PHOTO CARD END -->
 
     </div><!-- end tab-photo -->
 
-    <!-- ═══ WEB & TECH ═══ -->
+
+    <!-- ═══════════════════════════════════════════════
+         WEB & TECH TAB
+         ───────────────────────────────────────────────
+         TO ADD MORE CARDS: copy one block between
+         "WEB CARD START" and "WEB CARD END"
+         and paste it before the closing </div> below.
+         Change the tag, title, prompt text, and image src/alt.
+    ════════════════════════════════════════════════ -->
     <div class="prompt-panel" id="tab-web">
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d1117"/>
-            <!-- code editor UI -->
-            <rect x="10" y="10" width="320" height="140" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-            <rect x="10" y="10" width="320" height="24" rx="8" fill="#21262d"/>
-            <rect x="10" y="28" width="320" height="6" fill="#21262d"/>
-            <circle cx="28" cy="22" r="5" fill="#FF5F57"/><circle cx="44" cy="22" r="5" fill="#FEBC2E"/><circle cx="60" cy="22" r="5" fill="#28C840"/>
-            <!-- code lines with syntax colours -->
-            <rect x="30" y="45" width="60" height="5" rx="2" fill="#ff7b72"/><!-- keyword -->
-            <rect x="98" y="45" width="40" height="5" rx="2" fill="#ffa657"/><!-- type -->
-            <rect x="146" y="45" width="30" height="5" rx="2" fill="#79c0ff"/><!-- var -->
-            <rect x="30" y="58" width="20" height="5" rx="2" fill="#7ee787"/><!-- string -->
-            <rect x="58" y="58" width="80" height="5" rx="2" fill="#c9d1d9" opacity=".6"/>
-            <rect x="30" y="71" width="50" height="5" rx="2" fill="#ff7b72"/>
-            <rect x="88" y="71" width="70" height="5" rx="2" fill="#c9d1d9" opacity=".5"/>
-            <rect x="46" y="84" width="90" height="5" rx="2" fill="#7ee787"/>
-            <rect x="46" y="97" width="60" height="5" rx="2" fill="#79c0ff"/>
-            <rect x="114" y="97" width="40" height="5" rx="2" fill="#ffa657"/>
-            <rect x="30" y="110" width="30" height="5" rx="2" fill="#ff7b72"/>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">React · TypeScript · TailwindCSS</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/react-component.jpg" -->
+          <img src="WEB/react-component.jpg" alt="React Component Builder" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -377,36 +320,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">5.6k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d1117"/>
-            <!-- API diagram -->
-            <!-- Client box -->
-            <rect x="20" y="50" width="80" height="60" rx="7" fill="#1e3a5f" stroke="#2196f3" stroke-width="1.5"/>
-            <text x="60" y="79" font-family="Inter,sans-serif" font-size="10" fill="#90caf9" font-weight="700" text-anchor="middle">Client</text>
-            <text x="60" y="94" font-family="Inter,sans-serif" font-size="8" fill="#64b5f6" text-anchor="middle">Browser</text>
-            <!-- arrow right -->
-            <line x1="100" y1="80" x2="140" y2="80" stroke="#4caf50" stroke-width="2"/>
-            <polygon points="140,75 150,80 140,85" fill="#4caf50"/>
-            <text x="120" y="74" font-family="Inter,sans-serif" font-size="8" fill="#81c784" text-anchor="middle">POST</text>
-            <!-- API box -->
-            <rect x="150" y="40" width="80" height="80" rx="7" fill="#1b3a1e" stroke="#4caf50" stroke-width="1.5"/>
-            <text x="190" y="79" font-family="Inter,sans-serif" font-size="10" fill="#a5d6a7" font-weight="700" text-anchor="middle">API</text>
-            <text x="190" y="94" font-family="Inter,sans-serif" font-size="8" fill="#81c784" text-anchor="middle">Node.js</text>
-            <!-- arrow right -->
-            <line x1="230" y1="80" x2="255" y2="80" stroke="#ff9800" stroke-width="2"/>
-            <polygon points="255,75 265,80 255,85" fill="#ff9800"/>
-            <!-- DB box -->
-            <rect x="265" y="55" width="60" height="50" rx="7" fill="#3e2400" stroke="#ff9800" stroke-width="1.5"/>
-            <text x="295" y="79" font-family="Inter,sans-serif" font-size="10" fill="#ffcc80" font-weight="700" text-anchor="middle">DB</text>
-            <text x="295" y="94" font-family="Inter,sans-serif" font-size="8" fill="#ffb74d" text-anchor="middle">SQL</text>
-            <!-- JWT badge -->
-            <rect x="112" y="100" width="38" height="14" rx="4" fill="#7c3aed" opacity=".8"/>
-            <text x="131" y="111" font-family="Inter,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">JWT</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">REST API · JWT Auth · Node.js</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/rest-api.jpg" -->
+          <img src="WEB/rest-api.jpg" alt="REST API Endpoint" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -416,30 +336,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">4.3k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <!-- landing page wireframe -->
-            <rect x="20" y="15" width="300" height="130" rx="6" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- nav bar -->
-            <rect x="20" y="15" width="300" height="20" rx="6" fill="#f1f5f9"/>
-            <rect x="20" y="30" width="300" height="5" fill="#f1f5f9"/>
-            <rect x="30" y="20" width="40" height="6" rx="3" fill="#0052cc" opacity=".8"/>
-            <rect x="210" y="20" width="25" height="6" rx="3" fill="#cbd5e1"/>
-            <rect x="242" y="20" width="25" height="6" rx="3" fill="#cbd5e1"/>
-            <rect x="274" y="19" width="30" height="8" rx="4" fill="#0052cc"/>
-            <!-- hero text blocks -->
-            <rect x="35" y="48" width="130" height="10" rx="3" fill="#0f1117" opacity=".8"/>
-            <rect x="35" y="64" width="100" height="7" rx="3" fill="#94a3b8"/>
-            <rect x="35" y="76" width="115" height="7" rx="3" fill="#94a3b8"/>
-            <rect x="35" y="92" width="60" height="14" rx="5" fill="#0052cc"/>
-            <!-- hero image placeholder -->
-            <rect x="195" y="44" width="105" height="70" rx="6" fill="#e8f0fe"/>
-            <text x="247" y="84" font-family="Inter,sans-serif" font-size="22" fill="#0052cc" opacity=".3" text-anchor="middle">🖼</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Landing Page · SaaS · CTA · Copy</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/landing-page.jpg" -->
+          <img src="WEB/landing-page.jpg" alt="Landing Page Copy" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -449,33 +352,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">3.9k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d1117"/>
-            <!-- SQL editor -->
-            <rect x="15" y="15" width="310" height="130" rx="7" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-            <!-- line numbers -->
-            <rect x="15" y="15" width="30" height="130" rx="7" fill="#0d1117" opacity=".6"/>
-            <text x="29" y="42" font-family="monospace" font-size="9" fill="#6e7681" text-anchor="middle">1</text>
-            <text x="29" y="57" font-family="monospace" font-size="9" fill="#6e7681" text-anchor="middle">2</text>
-            <text x="29" y="72" font-family="monospace" font-size="9" fill="#6e7681" text-anchor="middle">3</text>
-            <text x="29" y="87" font-family="monospace" font-size="9" fill="#6e7681" text-anchor="middle">4</text>
-            <!-- SQL keywords -->
-            <rect x="52" y="36" width="35" height="6" rx="2" fill="#ff7b72"/>
-            <rect x="94" y="36" width="50" height="6" rx="2" fill="#79c0ff"/>
-            <rect x="152" y="36" width="30" height="6" rx="2" fill="#c9d1d9" opacity=".6"/>
-            <rect x="52" y="50" width="25" height="6" rx="2" fill="#ff7b72"/>
-            <rect x="84" y="50" width="40" height="6" rx="2" fill="#c9d1d9" opacity=".5"/>
-            <rect x="52" y="64" width="30" height="6" rx="2" fill="#ff7b72"/>
-            <rect x="89" y="64" width="60" height="6" rx="2" fill="#a5d6a7"/>
-            <rect x="156" y="64" width="20" height="6" rx="2" fill="#c9d1d9" opacity=".5"/>
-            <!-- exec button -->
-            <rect x="250" y="125" width="60" height="12" rx="4" fill="#238636"/>
-            <text x="280" y="135" font-family="Inter,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">▶ Run</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">SQL · Query Optimiser · Database</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/sql-query.jpg" -->
+          <img src="WEB/sql-query.jpg" alt="SQL Query Optimiser" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -485,26 +368,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.7k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d1117"/>
-            <!-- Docker containers -->
-            <rect x="20" y="25" width="90" height="50" rx="6" fill="#1e3a5f" stroke="#2196f3" stroke-width="1.5"/>
-            <text x="65" y="48" font-family="Inter,sans-serif" font-size="9" fill="#90caf9" text-anchor="middle" font-weight="700">Frontend</text>
-            <text x="65" y="62" font-family="Inter,sans-serif" font-size="8" fill="#64b5f6" text-anchor="middle">:3000</text>
-            <rect x="130" y="25" width="90" height="50" rx="6" fill="#1b3a1e" stroke="#4caf50" stroke-width="1.5"/>
-            <text x="175" y="48" font-family="Inter,sans-serif" font-size="9" fill="#a5d6a7" text-anchor="middle" font-weight="700">Backend</text>
-            <text x="175" y="62" font-family="Inter,sans-serif" font-size="8" fill="#81c784" text-anchor="middle">:8000</text>
-            <rect x="240" y="25" width="90" height="50" rx="6" fill="#3e2400" stroke="#ff9800" stroke-width="1.5"/>
-            <text x="285" y="48" font-family="Inter,sans-serif" font-size="9" fill="#ffcc80" text-anchor="middle" font-weight="700">Database</text>
-            <text x="285" y="62" font-family="Inter,sans-serif" font-size="8" fill="#ffb74d" text-anchor="middle">:5432</text>
-            <!-- docker-compose label -->
-            <rect x="20" y="90" width="310" height="28" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-            <text x="175" y="108" font-family="monospace" font-size="10" fill="#79c0ff" text-anchor="middle">docker-compose.yml</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">Docker · Compose · DevOps · Deploy</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/docker-setup.jpg" -->
+          <img src="WEB/docker-setup.jpg" alt="Docker Setup Guide" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -514,29 +384,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">3.2k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
+      <!-- WEB CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <!-- SEO checklist -->
-            <rect x="20" y="20" width="300" height="120" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <text x="35" y="42" font-family="Inter,sans-serif" font-size="11" fill="#0f1117" font-weight="700">SEO Audit Report</text>
-            <!-- check items -->
-            <circle cx="38" cy="58" r="6" fill="#22c55e"/><text x="38" y="62" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">✓</text>
-            <rect x="52" y="54" width="120" height="6" rx="2" fill="#94a3b8"/>
-            <circle cx="38" cy="78" r="6" fill="#22c55e"/><text x="38" y="82" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">✓</text>
-            <rect x="52" y="74" width="100" height="6" rx="2" fill="#94a3b8"/>
-            <circle cx="38" cy="98" r="6" fill="#f59e0b"/><text x="38" y="102" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">!</text>
-            <rect x="52" y="94" width="140" height="6" rx="2" fill="#94a3b8"/>
-            <circle cx="38" cy="118" r="6" fill="#ef4444"/><text x="38" y="122" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle">✗</text>
-            <rect x="52" y="114" width="90" height="6" rx="2" fill="#94a3b8"/>
-            <!-- score -->
-            <circle cx="285" cy="90" r="30" fill="#e8f0fe" stroke="#0052cc" stroke-width="2"/>
-            <text x="285" y="86" font-family="Inter,sans-serif" font-size="14" fill="#0052cc" text-anchor="middle" font-weight="800">84</text>
-            <text x="285" y="100" font-family="Inter,sans-serif" font-size="8" fill="#4a5568" text-anchor="middle">/ 100</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">SEO Audit · Core Web Vitals · Score</text>
-          </svg>
+          <!-- Replace src with your image: src="WEB/seo-audit.jpg" -->
+          <img src="WEB/seo-audit.jpg" alt="SEO Audit Checklist" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -546,34 +400,25 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.1k uses</span></div>
         </div>
       </div>
+      <!-- WEB CARD END -->
 
     </div><!-- end tab-web -->
 
-    <!-- ═══ VIDEO GENERATION ═══ -->
+
+    <!-- ═══════════════════════════════════════════════
+         VIDEO GENERATION TAB
+         ───────────────────────────────────────────────
+         TO ADD MORE CARDS: copy one block between
+         "VIDEO CARD START" and "VIDEO CARD END"
+         and paste it before the closing </div> below.
+    ════════════════════════════════════════════════ -->
     <div class="prompt-panel" id="tab-video">
 
+      <!-- VIDEO CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="drone" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f2027"/><stop offset="50%" stop-color="#203a43"/><stop offset="100%" stop-color="#2c5364"/></linearGradient></defs>
-            <rect width="340" height="160" fill="url(#drone)"/>
-            <!-- landscape from above -->
-            <rect x="0" y="80" width="340" height="80" fill="#1a3a1a" opacity=".8"/>
-            <!-- fields -->
-            <rect x="0" y="80" width="68" height="80" fill="#1e4d1e" opacity=".7"/>
-            <rect x="68" y="80" width="68" height="80" fill="#2d6a2d" opacity=".6"/>
-            <rect x="136" y="80" width="68" height="80" fill="#1e4d1e" opacity=".75"/>
-            <rect x="204" y="80" width="68" height="80" fill="#155e15" opacity=".6"/>
-            <rect x="272" y="80" width="68" height="80" fill="#2d6a2d" opacity=".7"/>
-            <!-- sun haze -->
-            <ellipse cx="170" cy="75" rx="160" ry="25" fill="#ffd700" opacity=".08"/>
-            <!-- drone icon -->
-            <text x="155" y="42" font-family="sans-serif" font-size="28">🚁</text>
-            <!-- 4K badge -->
-            <rect x="270" y="12" width="50" height="18" rx="5" fill="#0052cc" opacity=".9"/>
-            <text x="295" y="25" font-family="Inter,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">4K HDR</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Drone · Aerial · Golden Hour · Slow</text>
-          </svg>
+          <!-- Replace src with your image: src="VIDEO/drone-flyover.jpg" -->
+          <img src="VIDEO/drone-flyover.jpg" alt="Cinematic Drone Flyover" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -583,27 +428,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">1.9k uses</span></div>
         </div>
       </div>
+      <!-- VIDEO CARD END -->
 
+      <!-- VIDEO CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#080808"/>
-            <!-- product on dark bg -->
-            <rect x="120" y="25" width="100" height="110" rx="12" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
-            <!-- neon glow rings -->
-            <ellipse cx="170" cy="80" rx="70" ry="70" fill="none" stroke="#0052cc" stroke-width="1" opacity=".3"/>
-            <ellipse cx="170" cy="80" rx="55" ry="55" fill="none" stroke="#0052cc" stroke-width="1.5" opacity=".4"/>
-            <!-- particles -->
-            <circle cx="100" cy="50" r="2" fill="#4d8eff" opacity=".7"/>
-            <circle cx="240" cy="40" r="3" fill="#4d8eff" opacity=".5"/>
-            <circle cx="80" cy="120" r="1.5" fill="#a855f7" opacity=".6"/>
-            <circle cx="260" cy="110" r="2" fill="#ec4899" opacity=".5"/>
-            <circle cx="310" cy="70" r="2.5" fill="#4d8eff" opacity=".4"/>
-            <!-- product icon -->
-            <text x="170" y="88" font-family="sans-serif" font-size="32" text-anchor="middle">📱</text>
-            <!-- Apple-style text -->
-            <text x="170" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="600">Product Reveal · Dark · Particle FX · 15s</text>
-          </svg>
+          <!-- Replace src with your image: src="VIDEO/product-reveal.jpg" -->
+          <img src="VIDEO/product-reveal.jpg" alt="Product Reveal Ad" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -613,61 +444,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">3.4k uses</span></div>
         </div>
       </div>
+      <!-- VIDEO CARD END -->
 
+      <!-- VIDEO CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#0d0d1a"/>
-            <!-- logo animation frames -->
-            <rect x="15" y="20" width="70" height="50" rx="6" fill="#1a1a2e" stroke="#30363d" stroke-width="1"/>
-            <text x="50" y="50" font-family="Inter,sans-serif" font-size="16" fill="#4a5568" text-anchor="middle" font-weight="800">N</text>
-            <rect x="100" y="20" width="70" height="50" rx="6" fill="#1a1a2e" stroke="#252850" stroke-width="1"/>
-            <text x="135" y="50" font-family="Inter,sans-serif" font-size="16" fill="#7c3aed" text-anchor="middle" font-weight="800">N</text>
-            <rect x="185" y="15" width="80" height="60" rx="6" fill="#1a1a2e" stroke="#4d8eff" stroke-width="1.5"/>
-            <text x="225" y="50" font-family="Inter,sans-serif" font-size="20" fill="#4d8eff" text-anchor="middle" font-weight="800">N</text>
-            <!-- particles burst -->
-            <circle cx="225" cy="45" r="3" fill="#4d8eff" opacity=".9"/>
-            <circle cx="245" cy="30" r="2" fill="#a855f7" opacity=".8"/>
-            <circle cx="205" cy="28" r="2" fill="#ec4899" opacity=".7"/>
-            <!-- arrow progression -->
-            <line x1="87" y1="45" x2="97" y2="45" stroke="#4a5568" stroke-width="1.5"/>
-            <line x1="172" y1="45" x2="182" y2="45" stroke="#4a5568" stroke-width="1.5"/>
-            <!-- bottom text -->
-            <rect x="15" y="90" width="310" height="20" rx="5" fill="#161622"/>
-            <text x="170" y="104" font-family="Inter,sans-serif" font-size="9" fill="#6366f1" text-anchor="middle" font-weight="600">3D Logo Reveal · Particle Burst · Loop</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">Motion Graphics · Intro · 3s · Loopable</text>
-          </svg>
-          <span class="pm-preview-label">Preview</span>
-        </div>
-        <div class="pm-body">
-          <span class="pm-tag">Animation</span>
-          <h4>Motion Graphics Intro</h4>
-          <p>A dynamic logo animation intro for [brand name], 3D extrusion, particle burst on reveal, smooth easing, professional motion graphics style, 3 seconds, loopable, transparent background.</p>
-          <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.8k uses</span></div>
-        </div>
-      </div>
-
-      <div class="pm-card rev">
-        <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0533"/><stop offset="40%" stop-color="#6b21a8"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
-            <rect width="340" height="160" fill="url(#sky2)"/>
-            <!-- time-lapse clouds -->
-            <ellipse cx="80" cy="50" rx="70" ry="22" fill="rgba(255,255,255,.15)"/>
-            <ellipse cx="230" cy="35" rx="80" ry="20" fill="rgba(255,255,255,.12)"/>
-            <ellipse cx="310" cy="60" rx="50" ry="16" fill="rgba(255,255,255,.1)"/>
-            <!-- flowers blooming simplified -->
-            <circle cx="60" cy="130" r="12" fill="#fbbf24" opacity=".9"/>
-            <circle cx="90" cy="125" r="10" fill="#f97316" opacity=".8"/>
-            <circle cx="120" cy="132" r="11" fill="#fbbf24" opacity=".85"/>
-            <!-- speed lines (motion blur effect) -->
-            <line x1="0" y1="80" x2="60" y2="78" stroke="rgba(255,255,255,.1)" stroke-width="3"/>
-            <line x1="0" y1="55" x2="80" y2="52" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
-            <!-- time badge -->
-            <rect x="255" y="12" width="70" height="18" rx="5" fill="rgba(0,0,0,.5)"/>
-            <text x="290" y="25" font-family="monospace" font-size="9" fill="#fbbf24" text-anchor="middle">00:00 → 24:00</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.7)" font-weight="600">Time-lapse · Nature · Sky · BBC Style</text>
-          </svg>
+          <!-- Replace src with your image: src="VIDEO/timelapse-nature.jpg" -->
+          <img src="VIDEO/timelapse-nature.jpg" alt="Time-lapse Nature Scene" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -677,32 +460,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">1.6k uses</span></div>
         </div>
       </div>
+      <!-- VIDEO CARD END -->
 
-      <div class="pm-card rev" style="transition-delay:.07s">
+      <!-- VIDEO CARD START -->
+      <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#fff"/>
-            <!-- whiteboard animation style -->
-            <rect x="20" y="15" width="300" height="120" rx="8" fill="#fffde7" stroke="#f59e0b" stroke-width="1.5"/>
-            <!-- icon -->
-            <circle cx="70" cy="60" r="22" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-            <text x="70" y="67" font-family="sans-serif" font-size="20" text-anchor="middle">💡</text>
-            <!-- arrows and text -->
-            <line x1="95" y1="60" x2="130" y2="60" stroke="#f59e0b" stroke-width="2"/>
-            <polygon points="130,55 140,60 130,65" fill="#f59e0b"/>
-            <rect x="145" y="50" width="80" height="8" rx="3" fill="#f59e0b" opacity=".4"/>
-            <rect x="145" y="64" width="60" height="6" rx="3" fill="#f59e0b" opacity=".3"/>
-            <!-- step 2 -->
-            <line x1="230" y1="60" x2="270" y2="60" stroke="#f59e0b" stroke-width="2"/>
-            <polygon points="270,55 280,60 270,65" fill="#f59e0b"/>
-            <circle cx="295" cy="60" r="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
-            <text x="295" y="66" font-family="sans-serif" font-size="14" text-anchor="middle">✅</text>
-            <!-- bottom labels -->
-            <text x="55" y="100" font-family="Inter,sans-serif" font-size="9" fill="#92400e" text-anchor="middle" font-weight="600">Step 1</text>
-            <text x="185" y="100" font-family="Inter,sans-serif" font-size="9" fill="#92400e" text-anchor="middle" font-weight="600">Process</text>
-            <text x="295" y="100" font-family="Inter,sans-serif" font-size="9" fill="#92400e" text-anchor="middle" font-weight="600">Done</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Explainer · Whiteboard · 2D · 30s</text>
-          </svg>
+          <!-- Replace src with your image: src="VIDEO/explainer-video.jpg" -->
+          <img src="VIDEO/explainer-video.jpg" alt="Animated Explainer Video" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -712,30 +476,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">4.0k uses</span></div>
         </div>
       </div>
+      <!-- VIDEO CARD END -->
 
-      <div class="pm-card rev" style="transition-delay:.14s">
+      <!-- VIDEO CARD START -->
+      <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <!-- 9:16 frame on dark bg -->
-            <rect width="340" height="160" fill="#111"/>
-            <!-- phone silhouette -->
-            <rect x="120" y="10" width="100" height="140" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
-            <!-- vertical video -->
-            <rect x="124" y="22" width="92" height="110" rx="6" fill="#222"/>
-            <!-- tiktok-style content -->
-            <rect x="130" y="28" width="80" height="40" rx="4" fill="#1e3a5f" opacity=".8"/>
-            <text x="170" y="54" font-family="sans-serif" font-size="22" text-anchor="middle">🎵</text>
-            <!-- text overlays -->
-            <rect x="130" y="80" width="80" height="8" rx="3" fill="rgba(255,255,255,.7)"/>
-            <rect x="130" y="93" width="60" height="6" rx="3" fill="rgba(255,255,255,.4)"/>
-            <!-- hearts / likes -->
-            <text x="200" y="75" font-family="sans-serif" font-size="12">❤️</text>
-            <text x="200" y="90" font-family="sans-serif" font-size="12">💬</text>
-            <!-- 9:16 badge -->
-            <rect x="240" y="20" width="70" height="16" rx="5" fill="#ec4899" opacity=".85"/>
-            <text x="275" y="32" font-family="Inter,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">9:16 Reel</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" font-weight="600">Social Reel · TikTok · IG · 15s · Vertical</text>
-          </svg>
+          <!-- Replace src with your image: src="VIDEO/social-reel.jpg" -->
+          <img src="VIDEO/social-reel.jpg" alt="Social Media Reel" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -745,36 +492,41 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">5.1k uses</span></div>
         </div>
       </div>
+      <!-- VIDEO CARD END -->
+
+      <!-- VIDEO CARD START -->
+      <div class="pm-card rev" style="transition-delay:.14s">
+        <div class="pm-preview">
+          <!-- Replace src with your image: src="VIDEO/logo-reveal.jpg" -->
+          <img src="VIDEO/logo-reveal.jpg" alt="Logo Reveal Animation" class="pm-image">
+          <span class="pm-preview-label">Preview</span>
+        </div>
+        <div class="pm-body">
+          <span class="pm-tag">Branding</span>
+          <h4>Logo Reveal Animation</h4>
+          <p>A 5-second professional logo reveal animation for [brand], sleek particle build-up, smooth easing, dark background with accent color glow, corporate motion graphics style.</p>
+          <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.8k uses</span></div>
+        </div>
+      </div>
+      <!-- VIDEO CARD END -->
 
     </div><!-- end tab-video -->
 
-    <!-- ═══ DOCUMENTS ═══ -->
+
+    <!-- ═══════════════════════════════════════════════
+         DOCUMENTS TAB
+         ───────────────────────────────────────────────
+         TO ADD MORE CARDS: copy one block between
+         "DOCS CARD START" and "DOCS CARD END"
+         and paste it before the closing </div> below.
+    ════════════════════════════════════════════════ -->
     <div class="prompt-panel" id="tab-docs">
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- document header -->
-            <rect x="40" y="28" width="160" height="10" rx="3" fill="#0052cc" opacity=".8"/>
-            <rect x="40" y="44" width="100" height="6" rx="3" fill="#94a3b8"/>
-            <!-- table -->
-            <rect x="40" y="58" width="250" height="1" fill="#e2e8f0"/>
-            <rect x="40" y="68" width="50" height="6" rx="2" fill="#94a3b8"/>
-            <rect x="120" y="68" width="60" height="6" rx="2" fill="#94a3b8"/>
-            <rect x="210" y="68" width="60" height="6" rx="2" fill="#94a3b8"/>
-            <rect x="40" y="80" width="50" height="6" rx="2" fill="#0f1117" opacity=".6"/>
-            <rect x="120" y="80" width="60" height="6" rx="2" fill="#0f1117" opacity=".5"/>
-            <rect x="210" y="80" width="40" height="6" rx="2" fill="#22c55e" opacity=".8"/>
-            <rect x="40" y="92" width="50" height="6" rx="2" fill="#0f1117" opacity=".5"/>
-            <rect x="120" y="92" width="60" height="6" rx="2" fill="#0f1117" opacity=".45"/>
-            <rect x="210" y="92" width="55" height="6" rx="2" fill="#0052cc" opacity=".6"/>
-            <!-- signature line -->
-            <line x1="40" y1="128" x2="130" y2="128" stroke="#0052cc" stroke-width="1.5"/>
-            <text x="85" y="140" font-family="Inter,sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">Signature</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Business Proposal · Scope · Pricing</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/business-proposal.jpg" -->
+          <img src="DOCS/business-proposal.jpg" alt="Business Proposal" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -784,30 +536,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">3.7k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- email client chrome -->
-            <rect x="25" y="15" width="290" height="20" rx="8" fill="#f1f5f9"/>
-            <rect x="25" y="30" width="290" height="5" fill="#f1f5f9"/>
-            <rect x="38" y="20" width="50" height="6" rx="2" fill="#94a3b8"/>
-            <rect x="38" y="43" width="200" height="7" rx="3" fill="#0052cc" opacity=".7"/><!-- subject -->
-            <rect x="38" y="57" width="80" height="5" rx="2" fill="#94a3b8"/>
-            <!-- body lines -->
-            <rect x="38" y="72" width="250" height="5" rx="2" fill="#94a3b8" opacity=".7"/>
-            <rect x="38" y="83" width="230" height="5" rx="2" fill="#94a3b8" opacity=".6"/>
-            <rect x="38" y="94" width="200" height="5" rx="2" fill="#94a3b8" opacity=".6"/>
-            <!-- value prop highlight -->
-            <rect x="38" y="108" width="170" height="8" rx="3" fill="#0052cc" opacity=".15"/>
-            <rect x="38" y="108" width="170" height="8" rx="3" fill="none" stroke="#0052cc" stroke-width=".8"/>
-            <!-- CTA -->
-            <rect x="38" y="124" width="70" height="12" rx="5" fill="#0052cc" opacity=".85"/>
-            <text x="73" y="134" font-family="Inter,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">Reply →</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Cold Email · Outreach · CTA · 120 words</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/cold-email.jpg" -->
+          <img src="DOCS/cold-email.jpg" alt="Cold Outreach Email" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -817,29 +552,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">6.2k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <rect x="40" y="28" width="120" height="9" rx="3" fill="#0f1117" opacity=".8"/>
-            <text x="40" y="28" font-family="Inter,sans-serif" font-size="10" fill="#0f1117" font-weight="700" dy="9">Executive Summary</text>
-            <!-- key insights highlighted -->
-            <rect x="40" y="46" width="240" height="6" rx="2" fill="#94a3b8" opacity=".6"/>
-            <rect x="40" y="57" width="200" height="6" rx="2" fill="#94a3b8" opacity=".5"/>
-            <!-- insight badges -->
-            <rect x="40" y="72" width="8" height="8" rx="2" fill="#0052cc"/>
-            <rect x="54" y="74" width="150" height="5" rx="2" fill="#0f1117" opacity=".7"/>
-            <rect x="40" y="86" width="8" height="8" rx="2" fill="#22c55e"/>
-            <rect x="54" y="88" width="130" height="5" rx="2" fill="#0f1117" opacity=".65"/>
-            <rect x="40" y="100" width="8" height="8" rx="2" fill="#f59e0b"/>
-            <rect x="54" y="102" width="160" height="5" rx="2" fill="#0f1117" opacity=".65"/>
-            <!-- next steps -->
-            <rect x="40" y="118" width="240" height="18" rx="5" fill="#e8f0fe"/>
-            <rect x="48" y="124" width="100" height="5" rx="2" fill="#0052cc" opacity=".6"/>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Executive Summary · Key Insights · 1-Page</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/executive-summary.jpg" -->
+          <img src="DOCS/executive-summary.jpg" alt="Executive Summary Report" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -849,34 +568,13 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.9k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- resume layout -->
-            <rect x="25" y="15" width="90" height="130" rx="8" fill="#e8f0fe"/>
-            <rect x="25" y="30" width="90" height="115" fill="#e8f0fe"/>
-            <!-- photo placeholder -->
-            <circle cx="70" cy="45" r="18" fill="#0052cc" opacity=".2"/>
-            <circle cx="70" cy="40" r="8" fill="#0052cc" opacity=".3"/>
-            <ellipse cx="70" cy="58" rx="12" ry="7" fill="#0052cc" opacity=".25"/>
-            <!-- sidebar text lines -->
-            <rect x="34" y="72" width="70" height="5" rx="2" fill="#0052cc" opacity=".5"/>
-            <rect x="34" y="83" width="60" height="4" rx="2" fill="#94a3b8"/>
-            <rect x="34" y="93" width="65" height="4" rx="2" fill="#94a3b8"/>
-            <rect x="34" y="103" width="50" height="4" rx="2" fill="#94a3b8"/>
-            <!-- main content -->
-            <rect x="130" y="30" width="165" height="8" rx="3" fill="#0f1117" opacity=".8"/>
-            <rect x="130" y="44" width="100" height="5" rx="2" fill="#0052cc" opacity=".6"/>
-            <rect x="130" y="56" width="155" height="4" rx="2" fill="#94a3b8"/>
-            <rect x="130" y="66" width="140" height="4" rx="2" fill="#94a3b8"/>
-            <rect x="130" y="82" width="80" height="5" rx="2" fill="#0052cc" opacity=".5"/>
-            <rect x="130" y="92" width="150" height="4" rx="2" fill="#94a3b8"/>
-            <rect x="130" y="102" width="130" height="4" rx="2" fill="#94a3b8"/>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Resume · CV · Action Verbs · ATS</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/resume-cv.jpg" -->
+          <img src="DOCS/resume-cv.jpg" alt="Resume CV Rewrite" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -886,63 +584,29 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">7.4k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev" style="transition-delay:.07s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- legal doc header -->
-            <rect x="40" y="28" width="100" height="8" rx="3" fill="#0f1117" opacity=".8"/>
-            <rect x="40" y="42" width="240" height="1" fill="#e2e8f0"/>
-            <!-- numbered clauses -->
-            <text x="42" y="57" font-family="Inter,sans-serif" font-size="9" fill="#0052cc" font-weight="700">§ 1.</text>
-            <rect x="62" y="52" width="180" height="5" rx="2" fill="#94a3b8"/>
-            <rect x="62" y="62" width="160" height="5" rx="2" fill="#94a3b8" opacity=".7"/>
-            <text x="42" y="77" font-family="Inter,sans-serif" font-size="9" fill="#0052cc" font-weight="700">§ 2.</text>
-            <rect x="62" y="72" width="170" height="5" rx="2" fill="#94a3b8"/>
-            <text x="42" y="97" font-family="Inter,sans-serif" font-size="9" fill="#0052cc" font-weight="700">§ 3.</text>
-            <rect x="62" y="92" width="185" height="5" rx="2" fill="#94a3b8"/>
-            <rect x="62" y="102" width="150" height="5" rx="2" fill="#94a3b8" opacity=".7"/>
-            <!-- disclaimer highlight -->
-            <rect x="40" y="116" width="250" height="16" rx="4" fill="#fef3c7"/>
-            <rect x="48" y="121" width="8" height="6" rx="2" fill="#f59e0b"/>
-            <rect x="62" y="122" width="120" height="5" rx="2" fill="#92400e" opacity=".5"/>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Terms & Conditions · Legal · Plain English</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/terms-conditions.jpg" -->
+          <img src="DOCS/terms-conditions.jpg" alt="Terms Conditions Draft" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
           <span class="pm-tag">Legal</span>
-          <h4>Terms & Conditions Draft</h4>
+          <h4>Terms &amp; Conditions Draft</h4>
           <p>Draft a basic Terms and Conditions document for a [type of website/app]. Cover user accounts, intellectual property, liability limitations, refund policy, and governing law. Plain English style.</p>
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">2.2k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
+      <!-- DOCS CARD START -->
       <div class="pm-card rev" style="transition-delay:.14s">
         <div class="pm-preview">
-          <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
-            <rect width="340" height="160" fill="#f8fafc"/>
-            <rect x="25" y="15" width="290" height="130" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
-            <!-- blog outline tree -->
-            <rect x="40" y="28" width="180" height="8" rx="3" fill="#0052cc" opacity=".8"/>
-            <rect x="40" y="44" width="6" height="100" rx="3" fill="#e2e8f0"/>
-            <!-- H2 branches -->
-            <rect x="46" y="50" width="30" height="1" fill="#e2e8f0"/>
-            <rect x="78" y="46" width="130" height="7" rx="3" fill="#0f1117" opacity=".7"/>
-            <rect x="78" y="59" width="100" height="5" rx="2" fill="#94a3b8"/>
-            <rect x="78" y="69" width="115" height="5" rx="2" fill="#94a3b8"/>
-            <rect x="46" y="82" width="30" height="1" fill="#e2e8f0"/>
-            <rect x="78" y="78" width="120" height="7" rx="3" fill="#0f1117" opacity=".7"/>
-            <rect x="78" y="91" width="90" height="5" rx="2" fill="#94a3b8"/>
-            <rect x="46" y="112" width="30" height="1" fill="#e2e8f0"/>
-            <rect x="78" y="108" width="110" height="7" rx="3" fill="#0f1117" opacity=".7"/>
-            <!-- SEO badge -->
-            <rect x="260" y="45" width="42" height="14" rx="5" fill="#22c55e" opacity=".85"/>
-            <text x="281" y="56" font-family="Inter,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">SEO ✓</text>
-            <text x="10" y="153" font-family="Inter,sans-serif" font-size="9" fill="#888" font-weight="600">Blog Outline · SEO · H2 Structure · FAQ</text>
-          </svg>
+          <!-- Replace src with your image: src="DOCS/blog-outline.jpg" -->
+          <img src="DOCS/blog-outline.jpg" alt="Blog Post Outline" class="pm-image">
           <span class="pm-preview-label">Preview</span>
         </div>
         <div class="pm-body">
@@ -952,6 +616,7 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
           <div class="pm-foot"><button class="pm-copy" onclick="copyPrompt(this)"><i class="fas fa-copy"></i> Copy</button><span class="pm-uses">4.8k uses</span></div>
         </div>
       </div>
+      <!-- DOCS CARD END -->
 
     </div><!-- end tab-docs -->
 
@@ -960,13 +625,61 @@ foreground, a wooden table holds an ashtray and an iced coffee. Cinematic, high 
 
 <footer id="footer">
   <div class="footer-grid">
-    <div class="footer-brand"><div class="logo">Neko<em>tech</em></div><p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p><div class="socials"><a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a><a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a><a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a></div></div>
-    <div class="f-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="store.html">Store</a></li><li><a href="prompts.html">Prompts</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="f-col"><h4>Services</h4><ul><li><a href="#">Web Development</a></li><li><a href="#">Brand Identity</a></li><li><a href="#">Digital Marketing</a></li><li><a href="#">Mobile Apps</a></li><li><a href="#">SEO & Analytics</a></li></ul></div>
-    <div class="f-col"><h4>Newsletter</h4><p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth — no spam, ever.</p><div class="nl-row"><input type="email" placeholder="you@company.com"><button>Subscribe</button></div><div class="f-contact"><span><i class="fas fa-envelope"></i>hello@nekotech.io</span><span><i class="fas fa-phone"></i>+255 742 000 800</span><span><i class="fas fa-map-marker-alt"></i>Dar es Salaam, Tanzania</span></div></div>
+    <div class="footer-brand">
+      <div class="logo">Wiper<em>Digital</em></div>
+      <p>Building exceptional digital experiences that help businesses grow, connect, and lead their industries.</p>
+      <div class="socials">
+        <a href="#" class="soc-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="soc-btn"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="prompts.html">Prompts</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Web Development</a></li>
+        <li><a href="#">Brand Identity</a></li>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">Mobile Apps</a></li>
+        <li><a href="#">SEO &amp; Analytics</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h4>Newsletter</h4>
+      <p style="font-size:13px;color:var(--text-3);line-height:1.65;margin-bottom:12px;">Insights on design and digital growth — no spam, ever.</p>
+      <div class="nl-row">
+        <input type="email" placeholder="you@company.com">
+        <button>Subscribe</button>
+      </div>
+      <div class="f-contact">
+        <span><i class="fas fa-envelope"></i>info@wiperdigital.com</span>
+        <span><i class="fas fa-phone"></i>+255 769 156 157</span>
+        <span><i class="fas fa-map-marker-alt"></i>Dar es Salaam, Tanzania</span>
+      </div>
+    </div>
   </div>
-  <div class="footer-bot"><p>© 2025 Nekotech. All rights reserved.</p><div class="f-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div></div>
+  <div class="footer-bot">
+    <p>© 2025 Wiper Digital. All rights reserved.</p>
+    <div class="f-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
 </footer>
+
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
 <script>
 const html=document.documentElement,tBtn=document.getElementById('tBtn'),tIco=document.getElementById('tIco');
 tBtn.addEventListener('click',()=>{const dark=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',dark?'light':'dark');tIco.className=dark?'fas fa-moon':'fas fa-sun';});
@@ -983,7 +696,9 @@ function switchTab(name,btn){
   document.querySelectorAll('#tab-'+name+' .rev').forEach(el=>{el.classList.remove('in');setTimeout(()=>io.observe(el),50);});
 }
 function copyPrompt(btn){
-  const text=btn.closest('.pm-card').querySelector('p').textContent.trim();
+  /* Copies the full prompt text (not clipped) from the <p> tag */
+  const p=btn.closest('.pm-card').querySelector('p');
+  const text=p.textContent.trim();
   navigator.clipboard.writeText(text).then(()=>{
     btn.innerHTML='<i class="fas fa-check"></i> Copied!';btn.classList.add('copied');
     setTimeout(()=>{btn.innerHTML='<i class="fas fa-copy"></i> Copy';btn.classList.remove('copied');},2000);
