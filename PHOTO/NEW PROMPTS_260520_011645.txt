@@ -1,0 +1,74 @@
+Portrait prompts
+
+Use the uploaded image as the primary facial identity reference. Maintain 100% facial accuracy — including skin tone, facial structure, expression, and natural details. Do NOT alter or beautify beyond realistic enhancement.
+Recreate a high-end studio fashion portrait with the following specifications
+
+Pose & Composition:
+Use the pose, framing, and composition from the reference studio image (confident pose, one hand adjusting sunglasses)
+Maintain a mid-shot portrait (waist-up) with a strong fashion/editorial stance
+Subject facing the camera with a slightly tilted head and a confident expression
+
+Hair:
+Keep the hairstyle from the style reference (neatly braided cornrows with styled baby hairs)
+
+Outfit:
+Black oversized blazer (structured, clean tailoring)
+Crisp white dress shirt underneath
+Black tie with subtle graphic/text detail
+Outfits should feel modern, bold, and fashion-forward
+
+Accessories:
+Slim black rectangular sunglasses (slightly lowered on the nose)
+Long manicured nails (black with artistic white accents)
+Minimal jewelry (optional, clean look)
+
+Lighting:
+Professional cinematic studio lighting
+Soft but directional light (key light + subtle fill)
+Balanced highlights and shadows to enhance facial features
+Soft glow on skin with realistic reflections
+
+Background:
+Smooth deep burgundy / wine-colored studio backdrop
+Slight gradient with soft falloff
+Background blur (shallow depth of field)
+
+Camera & Quality:
+Shot on Sony A7R V, 61MP
+85mm lens look
+Aperture: f/1.8
+Ultra-sharp focus on the face
+Shallow depth of field (creamy bokeh)
+Hyper-realistic skin texture (visible pores, natural finish)
+8K resolution output
+
+Style & Finish:
+Editorial / magazine-quality fashion photography
+Clean, sharp, high dynamic range
+Color grading: rich, slightly warm tones with deep contrast
+No over-smoothing or artificial plastic skin
+Important Instruction:
+Preserve the exact identity of the uploaded face
+Blend seamlessly into the styled body and scene without distortion
+
+Ya couple
+
+@L BOY AI PROMPT ✪:🇬🇲🇪🇸🇸🇳:L BOY AI PROMPT: With the reference image and without changing facial features create a high quality hyper-realistic photograph 8k HD is a bottom up photograph, in the foreground is a young couple posing affectionately in the city at night.
+Composition details:
+Subjects: A man hugs a woman from behind while giving her a kiss on the mug.
+and accessories:
+The man is wearing a vibrant blue padded jacket with the hood on (with the Moncler logo visible on the arm), a digital black sports watch on his wrist.
+The woman wears a vibrant blue chill hat adorned with a bright brooch depicting the Chanel logo. And a vibrant blue padded jacket.
+Surroundings: An urban sona of a city with neon and building signs can be seen in the background.
+The photograph has a spontaneous and close-up "selfie" style, highlighting the contrast between the intense blue of the garments and the city lights.
+
+Ameagamia gari
+A 20-year-old young man of African descent, with short dark hair, stands casually leaning against the trunk of a White Mercedes-Benz GLE. He is wearing a matching, light tan or beige two-piece leisure suit or short-sleeve loungewear set with white piping, featuring a collared, half-zip shirt and matching trousers. He is wearing a black digital wristwatch on his left wrist. The car's license plate is visible. The setting is outdoors in daylight, featuring a slightly faded building facade and a metal gate in the background, with some tropical foliage and trees on the right side. The overall lighting is bright and natural, suggesting a warm, sunny day. Focus on a clear, natural photo quality.
+
+POSTER YA WORLD CUP
+Create a cinematic professional soccer poster featuring [reference image]. Keep the face, hair, figure, and angles exactly as shown in the image. Show the person in three perspectives: a super close-up portrait with the Brazil 2026 jersey, a side profile view wearing the Brazil 2026 soccer jersey with the last name "Sohan Jr” and a full-body shot in full soccer kit (Brazil 2026 jersey, shorts, socks, and cleats) with the sponsor's logo.
+At the bottom, place a dynamic action scene of the player performing a powerful bicycle high jump kick with motion blur and grass flying around him. The jersey must clearly display the number 10 on the front, back, and shorts.
+Use a backdrop of the Blue Camp Nou stadium glowing with the number 10 and the name Nayon Jr glowing behind the character.
+
+Ya kiume studio
+Ultra realistic 4K studio portrait of a young person sitting against a warm brown gradient background. He’s  wearing a textured red zip-up sweater (slightly open at the collar), paired with grey jeans. The subject has short natural afro hair, smooth dark skin, and is wearing clear-framed glasses and small hoop earrings. They also have layered necklaces and a smartwatch on their wrist. Their pose is relaxed, seated with hands resting together between their knees, looking directly at the camera with a calm, neutral expression. The lighting is soft and even, highlighting facial features and creating a professional, editorial-style look. High-resolution, sharp focus, shallow depth of field, minimalist composition, fashion portrait photography.
